@@ -1,21 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Color.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/SnakeWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/SnakeWindow.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1jhnhALuaW6VTxQMuZ2U5uVcXUL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RunManager" selected="Python.SnakeWindow">
+    <configuration name="Color" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PySnake" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/Color.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="SnakeWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PySnake" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -61,6 +112,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.SnakeWindow" />
+        <item itemvalue="Python.Color" />
       </list>
     </recent_temporary>
   </component>
@@ -75,23 +127,50 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1604265433744">
+    <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604265433744" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1604265433744">
+    <state x="593" y="331" width="355" height="223" key="Github.ShareDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265655013" />
+    <state x="496" y="132" key="Github.UntrackedFilesDialog" timestamp="1604265683007">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604265433744" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1604265433743">
+    <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1604349045075">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604265433743" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1604265433744">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604349045075" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1604349045074">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604265433744" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604349045074" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1604349045073">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604349045073" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1604349045075">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604349045075" />
+    <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
+    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604348372404">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1604348372404" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

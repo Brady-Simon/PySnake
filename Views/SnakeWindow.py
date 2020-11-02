@@ -1,4 +1,5 @@
 import tkinter as tk
+from typing import Tuple
 from Controllers.SnakeAlgorithm import SnakeAlgorithm
 from Models.SnakeBoard import SnakeBoard
 from Models.Direction import Direction
@@ -10,12 +11,18 @@ class SnakeWindow(tk.Frame):
 
     def __init__(self, master=None, snakeBoard: SnakeBoard = None,
                  humanControllable: bool = True, fps: int = 7,
-                 blockSize: int = 50, outlines_enabled: bool = True):
+                 blockSize: int = 50, outlines_enabled: bool = True,
+                 using_gradients: bool = False,
+                 initial_color: Tuple[int, int, int] = (0, 190, 255),
+                 final_color: Tuple[int, int, int] = (255, 255, 255)):
 
         self.humanControllable = humanControllable
         self.fps = fps
         self.blockSize = max(1, blockSize)
         self.outlines_enabled = outlines_enabled
+        self.using_gradients = using_gradients
+        self.initial_color = initial_color
+        self.final_color = final_color
         if master is None:
             self.master = tk.Tk()
             self.master.title("Slithery Snake")
@@ -43,7 +50,7 @@ class SnakeWindow(tk.Frame):
         height = self.snakeBoard.board.rows() * self.blockSize
         self.canvas = tk.Canvas(master=self.master, width=width, height=height, highlightthickness=0)
         self.canvas.focus_set()
-        self.canvas.bind("<Configure>", self.renderScreen)
+        self.canvas.bind("<Configure>", lambda _: self.renderScreen())
 
         if humanControllable:
             self.canvas.bind('<Key>', self.updateDirection)
@@ -53,7 +60,7 @@ class SnakeWindow(tk.Frame):
 
         self.after(1000//fps, self.updateGame)
 
-    def renderScreen(self, event=None):
+    def renderScreen(self):
         """Renders the contents of `snakeBoard` on screen."""
         self.canvas.delete(tk.ALL)
         for row in range(self.snakeBoard.board.rows()):
@@ -82,18 +89,41 @@ class SnakeWindow(tk.Frame):
             self.after(1000//self.fps, self.updateGame)
 
     def colorFor(self, x: int, y: int) -> str:
-        """Returns a string color to use for the block at `(x, y)`."""
+        """Returns a string color to use for the block at `(x, y)`.
+
+        If `using_gradients` is enabled, then the initial color
+        will fade to white as the snake gets longer.
+
+        Args:
+            x (int): The X-coordinate on the grid.
+            y (int): The Y-coordinate on the grid.
+
+        Returns:
+            str: The color to fill the block at (x, y). Either a word or hex code.
+        """
         item = self.snakeBoard.board.get((x, y))
         if item == self.snakeBoard.board.empty:
+            # Empty color
             return 'grey'
         elif (x, y) == self.snakeBoard.point:
+            # Point color
             return 'red'
         else:
-            return 'deep sky blue'
+            # Snake color
+            if self.using_gradients:
+                availableSnakes = [snake for snake in self.snakeBoard.snakeDict.values() if (x, y) in snake.segments]
+                if len(availableSnakes) == 0:
+                    return Color.toHex(self.initial_color)
+                progress = availableSnakes[0].segments.index((x, y)) / len(availableSnakes[0].segments)
+                color = Color.interpolateColor(self.initial_color, self.final_color, progress=progress)
+                return Color.rgbToHex(color[0], color[1], color[2])
+            else:
+                return Color.toHex(self.initial_color)
 
 
 def main():
-    window = SnakeWindow(humanControllable=False, fps=7, blockSize=50, outlines_enabled=True)
+    window = SnakeWindow(humanControllable=False, fps=7, blockSize=50,
+                         outlines_enabled=True, using_gradients=False)
     window.mainloop()
 
 
