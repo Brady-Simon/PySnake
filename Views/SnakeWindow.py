@@ -12,14 +12,29 @@ class SnakeWindow(tk.Frame):
     def __init__(self, master=None, snakeBoard: SnakeBoard = None,
                  humanControllable: bool = True, fps: int = 7,
                  blockSize: int = 50, outlines_enabled: bool = True,
-                 using_gradients: bool = False,
+                 using_gradients: bool = False, reset_func=None,
                  initial_color: Tuple[int, int, int] = (0, 190, 255),
                  final_color: Tuple[int, int, int] = (255, 255, 255)):
+        """Creates a visual representation of a Snake game.
+
+        Args:
+            master: The Tkinter root to use. Optional.
+            snakeBoard (SnakeBoard): The board to show on screen. Optional.
+            humanControllable (bool): Whether or not a human is controlling the snake.
+            fps (int): The number of frames per second to update the game.
+            blockSize (int): The width of each block on screen.
+            outlines_enabled (bool): Whether or not to include outlines on each block.
+            using_gradients (bool): Whether or not to use gradients for the snake.
+            reset_func: A function that returns a new `SnakeBoard` upon the game ending.
+            initial_color: The color to use for the head of the snake.
+            final_color: The color to use for the tail of the snake. Only relevant if `usingGradients` is `True`.
+        """
 
         self.humanControllable = humanControllable
         self.fps = fps
         self.blockSize = max(1, blockSize)
         self.outlines_enabled = outlines_enabled
+        self.reset_func = reset_func
         self.using_gradients = using_gradients
         self.initial_color = initial_color
         self.final_color = final_color
@@ -85,8 +100,11 @@ class SnakeWindow(tk.Frame):
         else:
             self.snakeBoard.update()
         self.renderScreen()
-        if len(self.snakeBoard.snakeDict) > 0:
+        if not self.snakeBoard.isGameOver():
             self.after(1000//self.fps, self.updateGame)
+        elif self.reset_func is not None:
+            self.snakeBoard = self.reset_func()
+            self.after(1000 // self.fps, self.updateGame)
 
     def colorFor(self, x: int, y: int) -> str:
         """Returns a string color to use for the block at `(x, y)`.
@@ -121,9 +139,23 @@ class SnakeWindow(tk.Frame):
                 return Color.toHex(self.initial_color)
 
 
+def generateBoard() -> SnakeBoard:
+    """Generates an example `SnakeBoard` to use for training."""
+    snakeBoard = SnakeBoard()
+    snake = Snake(name='P1', mark=Color.colorize('X', Color.cyan),
+                  segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
+                            (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
+                            (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 1)],
+                  controller=SnakeAlgorithm())
+    snakeBoard.addSnake(snake)
+    snakeBoard.generatePoint()
+    return snakeBoard
+
+
 def main():
     window = SnakeWindow(humanControllable=False, fps=7, blockSize=50,
                          outlines_enabled=True, using_gradients=True,
+                         reset_func=generateBoard,
                          initial_color=(0, 190, 255), final_color=(255, 0, 255))
     window.mainloop()
 

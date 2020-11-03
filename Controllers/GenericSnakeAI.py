@@ -2,6 +2,8 @@ import torch
 import torch.optim as optim
 import torch.nn as nn
 from Models.SnakeBoard import SnakeBoard
+from Models.Snake import Snake
+from Models.Direction import Direction
 
 
 class GenericSnakeAI(nn.Module):
@@ -9,10 +11,11 @@ class GenericSnakeAI(nn.Module):
 
     Input lists should match the following structure:
      - Size X list
-     - Direction snake is facing [1, 0, 0, 0] (length 4)
      - Direction of the point [0, 1, 1, 0] (length (4)
+     - Direction snake is facing [1, 0, 0, 0] (length 4)
      - Vision around the snake (3x3 grid, 5x5 grid, etc.)
 
+     The output from `forward()` is a 4-length tensor indicating the directions.
     """
 
     def __init__(self, vision_radius: int = 2, debug: bool = False):
@@ -23,11 +26,12 @@ class GenericSnakeAI(nn.Module):
             debug (bool): Whether or not to include diagnostic print statements.
         """
         super().__init__()
+        self.vision_radius = vision_radius
         self.debug = debug
         self.lossHistory = []
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-        inputSize: int = 8 + (2 * vision_radius + 1)**2
+        inputSize: int = 8 + (2 * vision_radius + 1) ** 2
         hiddenSize1 = int(inputSize * 3 / 8)
         hiddenSize2 = int(hiddenSize1 * 3 / 5)
         # 32 20 12 4
@@ -80,15 +84,49 @@ class GenericSnakeAI(nn.Module):
 
         return self.lossHistory, epochHistory
 
-    def boardToTensor(self, gameBoard: SnakeBoard):
+    def boardToTensor(self, gameBoard: SnakeBoard, snakeName: str):
         """Converts a board to a usable Tensor for input into the ANN.
 
         Args:
             gameBoard (TicTacToeBoard): The board being converted to a tensor.
+            snakeName (str): The name of the snake to control.
 
         Returns:
             tensor: A 27-length tensor that represents the locations of X, O, and empty spaces.
         """
         results = []
-        # TODO: Implement
+        # Append the directions to point
+        pointDirections = gameBoard.directionsToPoint(pos=gameBoard.snakeDict.get(snakeName).head())
+        results.extend([1.0 if direction in pointDirections else 0.0 for direction in Direction.moves()])
+        # Append the current direction
+        currentDirection = gameBoard.directionFor(snakeName=snakeName)
+        results.extend([1.0 if currentDirection == direction else 0.0 for direction in Direction.moves()])
+        # Append vision grid
+        for y in range(-self.vision_radius, self.vision_radius + 1):
+            for x in range(-self.vision_radius, self.vision_radius + 1):
+                if not gameBoard.board.inBounds((x, y)):
+                    results.append(0.0)
+                elif not gameBoard.board.isEmpty((x, y)):
+                    results.append(0.0)
+                else:
+                    results.append(1.0)
+        # Return the resulting tensor
         return torch.Tensor(results).to(self.device)
+
+    def trainingMatch(self, optimizer):
+        """Trains the network on a combination of matches.
+
+        Args:
+            optimizer: The optimizer for the neural network to use.
+        """
+        # Play a normal game
+        turnCount = 1
+        gameBoard = SnakeBoard()
+        gameBoard.addSnake(
+            Snake('AI', 'A',
+                  segments=[(self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 3),
+                            (self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 2),
+                            (self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 1)],
+                  )
+        )
+        # TODO: Loop through and play game

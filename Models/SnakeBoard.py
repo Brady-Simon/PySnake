@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Tuple
 from Models.Snake import Snake
 from Models.Board import Board
 from Models.Direction import Direction
@@ -70,6 +70,10 @@ class SnakeBoard:
             snake = self.snakeDict.get(snakeName)
             self.move(snakeName=snakeName, direction=snake.controller.nextDirection(self.board, snake, self.point))
 
+    def isGameOver(self):
+        """Whether or not the game is over. The game ends when no snakes are left."""
+        return len(self.snakeDict) == 0
+
     def generatePoint(self):
         """Generates a new `point` location."""
         pos, mark = self.board.random()
@@ -88,6 +92,32 @@ class SnakeBoard:
                 or snake.adjusted(snake.head(), direction) == self.point
                 ]
 
+    def directionFor(self, snakeName: str) -> Direction:
+        """Returns the current direction of the snake with `snakeName`.
+        Returns `Direction.none` if an error occurs.
+        """
+        if snakeName not in self.snakeDict.keys():
+            return Direction.none
+        snake = self.snakeDict.get(snakeName)
+        directionValue = (snake.segments[0][0] - snake.segments[1][0],
+                          snake.segments[0][1] - snake.segments[1][1])
+        # Find directions that match the raw direction value.
+        matchingDirections = [direction for direction in Direction.moves() if direction.value == directionValue]
+        # Return the first match, or .none if there are not matches (which shouldn't happen).
+        if len(matchingDirections) == 0:
+            return Direction.none
+        else:
+            return matchingDirections[0]
+
+    def directionsToPoint(self, pos: Tuple[int, int]) -> List[Direction]:
+        """Returns the list of directions to get to the `point` from `pos`."""
+        results = []
+        delta = (self.point[0] - pos[0], self.point[1] - pos[1])
+        results.append(Direction.up) if delta[1] < 0 else results.append(Direction.down)
+        results.append(Direction.left) if delta[0] < 0 else results.append(Direction.right)
+        return results
+
+
 
 def main():
     snakeBoard = SnakeBoard()
@@ -95,6 +125,7 @@ def main():
     snakeBoard.addSnake(snake)
     snakeBoard.generatePoint()
     print(snakeBoard.board)
+    print(f"Direction: {snakeBoard.directionFor('Player1')}")
 
 
 if __name__ == '__main__':

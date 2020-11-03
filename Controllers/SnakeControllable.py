@@ -1,6 +1,5 @@
 from typing import Tuple
 from Models.Board import Board
-from Models.Snake import Snake
 from Models.Direction import Direction
 
 
@@ -9,7 +8,8 @@ class SnakeControllable:
     Extend this class and implement `nextDirection` to allow snakes to autonomously move.
     """
 
-    def nextDirection(self, board: Board, snake: Snake, point: Tuple[int, int]) -> Direction:
+    # No argument hints for snake due to circular import issues.
+    def nextDirection(self, board: Board, snake, point: Tuple[int, int]) -> Direction:
         """The next move to take given the current state.
         Returns `Direction.none` unless overridden.
 
