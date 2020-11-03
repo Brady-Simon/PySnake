@@ -80,6 +80,14 @@ class SnakeBoard:
         self.point = pos
         self.board.place(Color.colorize('0', Color.red), pos)
 
+    def safeDirections(self, snakeName: str) -> List[Direction]:
+        """Returns a list of safe directions to move for the snake with `snakeName`."""
+        snake = self.snakeDict.get(snakeName)
+        return [direction for direction in Direction.moves()
+                if self.board.isEmpty(snake.adjusted(snake.head(), direction))
+                or snake.adjusted(snake.head(), direction) == self.point
+                ]
+
 
 def main():
     snakeBoard = SnakeBoard()

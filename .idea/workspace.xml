@@ -19,11 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added gradient support to snakes in SnakeWindow.py.&#10;&#10;An initial and final color allow complete customization over the color of the gradient. If not using gradients, then initial_color defines the color of the snake's entire body.">
+      <change afterPath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Color.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Direction.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Direction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SnakeBoard.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/SnakeBoard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/SnakeWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/SnakeWindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +31,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jhnhALuaW6VTxQMuZ2U5uVcXUL" />
@@ -125,6 +137,14 @@
       <option name="presentableId" value="Default" />
       <updated>1604265307763</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added gradient support to snakes in SnakeWindow.py.&#10;&#10;An initial and final color allow complete customization over the color of the gradient. If not using gradients, then initial_color defines the color of the snake's entire body.">
+      <created>1604349212407</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604349212407</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,6 +157,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added gradient support to snakes in SnakeWindow.py.&#10;&#10;An initial and final color allow complete customization over the color of the gradient. If not using gradients, then initial_color defines the color of the snake's entire body." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added gradient support to snakes in SnakeWindow.py.&#10;&#10;An initial and final color allow complete customization over the color of the gradient. If not using gradients, then initial_color defines the color of the snake's entire body." />
   </component>
   <component name="WindowStateProjectService">
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
@@ -147,30 +172,34 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1604349045075">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1604422829883">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604349045075" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1604349045074">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604422829883" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1604422829881">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604349045074" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1604349045073">
+    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604422829881" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1604422829881">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604349045073" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1604349045075">
+    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604422829881" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1604422829882">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604349045075" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604422829882" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
-    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604348372404">
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604349216285">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1604348372404" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604349216285" />
+    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604422730506">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1604422730506" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -123,7 +123,8 @@ class SnakeWindow(tk.Frame):
 
 def main():
     window = SnakeWindow(humanControllable=False, fps=7, blockSize=50,
-                         outlines_enabled=True, using_gradients=False)
+                         outlines_enabled=True, using_gradients=True,
+                         initial_color=(0, 190, 255), final_color=(255, 0, 255))
     window.mainloop()
 
 

@@ -11,7 +11,7 @@ class Direction(Enum):
     @staticmethod
     def moves():
         """Returns a list of all directions except `none`."""
-        return [Direction.up, Direction.down, Direction.left, Direction.right]
+        return [Direction.up, Direction.right, Direction.down, Direction.left]
 
     def isOpposite(self, direction) -> bool:
         """Whether or not `direction` is on the opposite side of `self`."""
