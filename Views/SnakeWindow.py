@@ -112,14 +112,21 @@ class SnakeWindow(tk.Frame):
     def updateGame(self):
         """Updates the window with board changes at set `fps` intervals."""
         if self.humanControllable:
+            # Update the direction of the snake based on human WASD input.
             self.direction = self.nextDirection
             self.snakeBoard.move(snakeName='P1', direction=self.direction)
         else:
+            # Just let the SnakeBoard update itself.
             self.snakeBoard.update()
+
+        # Render any changes on screen.
         self.renderScreen()
+
         if not self.snakeBoard.isGameOver():
+            # Update the game again at a set interval.
             self.after(1000//self.fps, self.updateGame)
         elif self.reset_func is not None:
+            # Game ended and reset function is available; reset game.
             self.snakeBoard = self.reset_func()
             self.direction = Direction.up
             self.nextDirection = Direction.up

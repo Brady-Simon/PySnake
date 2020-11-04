@@ -20,18 +20,29 @@ class Snake:
                 Getting a point resets this value. Snake never gets hungry if left `None`.
         """
         self.name = name
+        """The unique name of this snake."""
         self.mark = mark
+        """The mark to place on a text based view of a board."""
         self.controller = controller if controller is not None else Controller.SnakeControllable()
+        """The controller that can decide the next move of the snake."""
         self.maxHealth: int = maxHealth
+        """The maximum number of times the snake can move without starving."""
+        self.score: int = 0
+        """A representation of how well the snake is doing. Increases as the snake grows."""
         if maxHealth is not None:
             self.health: int = maxHealth
+            """The snake's current health. The snake is starving once it reaches 0."""
 
         if segments is None:
             self.segments = [(2, 0), (1, 0), (0, 0)]
         else:
             self.segments = segments
+            """The indices of each body part, ordered from head to tail."""
 
     def head(self) -> (int, int):
+        """The position of the snake's head, which is `segments[0]`.
+        Returns `None` if the snake has no segments.
+        """
         if len(self.segments) == 0:
             return None
         else:
@@ -41,9 +52,10 @@ class Snake:
         """Grows the snake by the given `size`.
 
         Args:
-            size (int): The length for which to grow.
+            size (int): The number of segments to add to the snake.
         """
         if len(self.segments) != 0:
+            self.score += 1
             last = self.segments[-1]
             for _ in range(size):
                 self.segments.append(last)
@@ -73,8 +85,6 @@ class Snake:
         head = (head[0] + direction.value[0], head[1] + direction.value[1])
         self.segments.insert(0, head)
         self.segments.pop(len(self.segments) - 1)
-
-
 
         return head
 
