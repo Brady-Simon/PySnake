@@ -55,6 +55,9 @@ class SnakeBoard:
                 self.board.placeEmpty(tail)
                 self.board.place(snake.mark, head)
 
+            if snake.maxHealth is not None and snake.health == 0:
+                self.remove(snake)
+
     def remove(self, snake: Snake):
         """Removes `snake` from `board` and `snakeDict`.
         Previous locations on the board are made empty.

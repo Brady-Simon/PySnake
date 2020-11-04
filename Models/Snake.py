@@ -6,7 +6,7 @@ import Controllers.SnakeControllable as Controller
 class Snake:
 
     # Not type hinting controller to prevent circular imports
-    def __init__(self, name: str, mark, segments: List[Tuple[int, int]] = None, controller=None):
+    def __init__(self, name: str, mark, segments: List[Tuple[int, int]] = None, controller=None, maxHealth: int = None):
         """Creates a new snake.
 
         Args:
@@ -16,10 +16,16 @@ class Snake:
                 The head is at the first index of the list.
             controller (SnakeControllable): The algorithm that decides how to move the snake.
                 Defaults to `SnakeControllable` if left blank, which means no movement.
+            maxHealth (int): The number of times the snake can move before starving.
+                Getting a point resets this value. Snake never gets hungry if left `None`.
         """
         self.name = name
         self.mark = mark
         self.controller = controller if controller is not None else Controller.SnakeControllable()
+        self.maxHealth: int = maxHealth
+        if maxHealth is not None:
+            self.health: int = maxHealth
+
         if segments is None:
             self.segments = [(2, 0), (1, 0), (0, 0)]
         else:
@@ -41,6 +47,9 @@ class Snake:
             last = self.segments[-1]
             for _ in range(size):
                 self.segments.append(last)
+            # Reset health if applicable
+            if self.maxHealth is not None:
+                self.health = self.maxHealth
 
     def move(self, direction: Direction) -> (int, int):
         """Moves the snake in the given `direction`.
@@ -55,10 +64,18 @@ class Snake:
         if direction == Direction.none:
             return self.head()
 
+        # Adjust health if applicable
+        if self.maxHealth is not None and self.health > 0:
+            # if self.health > 0:
+            self.health -= 1
+
         head = self.head()
         head = (head[0] + direction.value[0], head[1] + direction.value[1])
         self.segments.insert(0, head)
         self.segments.pop(len(self.segments) - 1)
+
+
+
         return head
 
     @staticmethod

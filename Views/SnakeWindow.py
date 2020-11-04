@@ -52,7 +52,7 @@ class SnakeWindow(tk.Frame):
                           segments=[(self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 3),
                                     (self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 2),
                                     (self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 1)],
-                          controller=SnakeAlgorithm())
+                          controller=SnakeAlgorithm(), maxHealth=15)
             self.snakeBoard.addSnake(snake)
             self.snakeBoard.generatePoint()
         else:
@@ -104,6 +104,8 @@ class SnakeWindow(tk.Frame):
             self.after(1000//self.fps, self.updateGame)
         elif self.reset_func is not None:
             self.snakeBoard = self.reset_func()
+            self.direction = Direction.up
+            self.nextDirection = Direction.up
             self.after(1000 // self.fps, self.updateGame)
 
     def colorFor(self, x: int, y: int) -> str:
@@ -146,14 +148,14 @@ def generateBoard() -> SnakeBoard:
                   segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
                             (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
                             (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 1)],
-                  controller=SnakeAlgorithm())
+                  controller=SnakeAlgorithm(), maxHealth=15)
     snakeBoard.addSnake(snake)
     snakeBoard.generatePoint()
     return snakeBoard
 
 
 def main():
-    window = SnakeWindow(humanControllable=False, fps=7, blockSize=50,
+    window = SnakeWindow(humanControllable=True, fps=7, blockSize=50,
                          outlines_enabled=True, using_gradients=True,
                          reset_func=generateBoard,
                          initial_color=(0, 190, 255), final_color=(255, 0, 255))

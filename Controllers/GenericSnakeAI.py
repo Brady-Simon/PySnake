@@ -130,3 +130,5 @@ class GenericSnakeAI(nn.Module):
                   )
         )
         # TODO: Loop through and play game
+
+
