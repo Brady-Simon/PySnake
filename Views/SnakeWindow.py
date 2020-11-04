@@ -14,7 +14,8 @@ class SnakeWindow(tk.Frame):
                  blockSize: int = 50, outlines_enabled: bool = True,
                  using_gradients: bool = False, reset_func=None,
                  initial_color: Tuple[int, int, int] = (0, 190, 255),
-                 final_color: Tuple[int, int, int] = (255, 255, 255)):
+                 final_color: Tuple[int, int, int] = (255, 255, 255),
+                 healthBarWidth: int = 5):
         """Creates a visual representation of a Snake game.
 
         Args:
@@ -28,6 +29,7 @@ class SnakeWindow(tk.Frame):
             reset_func: A function that returns a new `SnakeBoard` upon the game ending.
             initial_color: The color to use for the head of the snake.
             final_color: The color to use for the tail of the snake. Only relevant if `usingGradients` is `True`.
+            healthBarWidth (int): The width in pixels for the health bar for hungry snakes.
         """
 
         self.humanControllable = humanControllable
@@ -47,21 +49,19 @@ class SnakeWindow(tk.Frame):
         super().__init__(master)
 
         if snakeBoard is None:
-            self.snakeBoard = SnakeBoard()
-            snake = Snake(name='P1', mark=Color.colorize('X', Color.cyan),
-                          segments=[(self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 3),
-                                    (self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 2),
-                                    (self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 1)],
-                          controller=SnakeAlgorithm(), maxHealth=15)
-            self.snakeBoard.addSnake(snake)
-            self.snakeBoard.generatePoint()
+            self.snakeBoard = generateBoard()
         else:
             self.snakeBoard = snakeBoard
 
         self.direction = Direction.up
         self.nextDirection = Direction.up
+        self.healthBarWidth = max(0, healthBarWidth)
 
-        width = self.snakeBoard.board.columns() * self.blockSize
+        # The number of snakes that have a finite amount of health.
+        # Add a small bar on the side of the grid to show health.
+        hungrySnakeCount = len([snake for snake in self.snakeBoard.snakeDict.values() if snake.maxHealth is not None])
+
+        width = self.snakeBoard.board.columns() * self.blockSize + (self.healthBarWidth * hungrySnakeCount)
         height = self.snakeBoard.board.rows() * self.blockSize
         self.canvas = tk.Canvas(master=self.master, width=width, height=height, highlightthickness=0)
         self.canvas.focus_set()
@@ -78,6 +78,12 @@ class SnakeWindow(tk.Frame):
     def renderScreen(self):
         """Renders the contents of `snakeBoard` on screen."""
         self.canvas.delete(tk.ALL)
+        # Render a dark grey background behind everything
+        # This is useful for a clean background behind the health bar if applicable
+        self.canvas.create_rectangle(0, 0, self.canvas.winfo_reqwidth(),
+                                     self.canvas.winfo_reqheight(), fill='gray30')
+
+        # Render the snake grid
         for row in range(self.snakeBoard.board.rows()):
             for column in range(self.snakeBoard.board.columns()):
                 self.canvas.create_rectangle(column * self.blockSize, row * self.blockSize,
@@ -85,6 +91,17 @@ class SnakeWindow(tk.Frame):
                                              fill=self.colorFor(column, row),
                                              outline='black' if self.outlines_enabled else self.colorFor(column, row),
                                              )
+        # Render the health bars only if some snakes have finite health
+        hungrySnakes = [snake for snake in self.snakeBoard.snakeDict.values() if snake.maxHealth is not None]
+        if len(hungrySnakes) > 0:
+            startingWidth = self.snakeBoard.board.columns() * self.blockSize
+            maxHeight = self.snakeBoard.board.rows() * self.blockSize
+            for snake in hungrySnakes:
+                healthBarHeight = int(maxHeight * snake.health / snake.maxHealth)
+                self.canvas.create_rectangle(startingWidth, maxHeight,
+                                             startingWidth + self.healthBarWidth, maxHeight - healthBarHeight,
+                                             fill='green')
+                startingWidth += 5
 
     def updateDirection(self, event):
         """Updates the local `nextDirection` based on the key-press event."""
@@ -148,7 +165,7 @@ def generateBoard() -> SnakeBoard:
                   segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
                             (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
                             (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 1)],
-                  controller=SnakeAlgorithm(), maxHealth=15)
+                  controller=SnakeAlgorithm(), maxHealth=50)
     snakeBoard.addSnake(snake)
     snakeBoard.generatePoint()
     return snakeBoard
@@ -157,7 +174,7 @@ def generateBoard() -> SnakeBoard:
 def main():
     window = SnakeWindow(humanControllable=True, fps=7, blockSize=50,
                          outlines_enabled=True, using_gradients=True,
-                         reset_func=generateBoard,
+                         reset_func=generateBoard, healthBarWidth=10,
                          initial_color=(0, 190, 255), final_color=(255, 0, 255))
     window.mainloop()
 
