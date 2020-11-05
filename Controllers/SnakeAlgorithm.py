@@ -8,9 +8,14 @@ from Models.Direction import Direction
 
 class SnakeAlgorithm(SnakeControllable):
 
-    def nextDirection(self, board: Board, snake: Snake, point: Tuple[int, int]) -> Direction:
+    def nextDirection(self, snakeBoard, snakeName: str) -> Direction:
+        snake = snakeBoard.snakeDict.get(snakeName)
+        point = snakeBoard.point
+        if snake is None:
+            return Direction.none
+
         distanceToPoint = (point[0] - snake.head()[0], point[1] - snake.head()[1])
-        directions = SnakeAlgorithm.validDirections(board, snake, point)
+        directions = SnakeAlgorithm.validDirections(snakeBoard.board, snake, snakeBoard.point)
 
         if len(directions) == 0:
             allMoves = Direction.moves()
@@ -35,16 +40,13 @@ class SnakeAlgorithm(SnakeControllable):
 
 
 def main():
-    board = Board()
-    snake = Snake(name='P1', mark='X', segments=[(5, 5), (4, 5), (3, 5)])
-    for pos in snake.segments:
-        board.place('X', pos)
+    from Models.SnakeBoard import SnakeBoard
     ai = SnakeAlgorithm()
-    print(ai.validDirections(board, snake, (2, 5)))
-    print(ai.nextDirection(board, snake, (2, 5)))
-    print(ai.nextDirection(board, snake, (6, 5)))
-    print(ai.nextDirection(board, snake, (5, 4)))
-    print(ai.nextDirection(board, snake, (5, 6)))
+    snake = Snake(name='P1', mark='X', segments=[(5, 5), (4, 5), (3, 5)], controller=ai)
+    snakeBoard = SnakeBoard(snakes=[snake])
+    print(snakeBoard.board)
+    print(ai.validDirections(snakeBoard.board, snake, (2, 5)))
+    print(ai.nextDirection(snakeBoard, 'P1'))
 
 
 if __name__ == '__main__':

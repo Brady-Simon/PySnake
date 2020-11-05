@@ -81,7 +81,8 @@ class SnakeWindow(tk.Frame):
         # Render a dark grey background behind everything
         # This is useful for a clean background behind the health bar if applicable
         self.canvas.create_rectangle(0, 0, self.canvas.winfo_reqwidth(),
-                                     self.canvas.winfo_reqheight(), fill='gray30')
+                                     self.canvas.winfo_reqheight(), fill='gray30',
+                                     outline='black' if self.outlines_enabled else 'gray30')
 
         # Render the snake grid
         for row in range(self.snakeBoard.board.rows()):
@@ -100,7 +101,7 @@ class SnakeWindow(tk.Frame):
                 healthBarHeight = int(maxHeight * snake.health / snake.maxHealth)
                 self.canvas.create_rectangle(startingWidth, maxHeight,
                                              startingWidth + self.healthBarWidth, maxHeight - healthBarHeight,
-                                             fill='green')
+                                             fill='green', outline='black' if self.outlines_enabled else 'gray')
                 startingWidth += 5
 
     def updateDirection(self, event):
@@ -179,8 +180,8 @@ def generateBoard() -> SnakeBoard:
 
 
 def main():
-    window = SnakeWindow(humanControllable=True, fps=7, blockSize=50,
-                         outlines_enabled=True, using_gradients=True,
+    window = SnakeWindow(humanControllable=False, fps=20, blockSize=50,
+                         outlines_enabled=False, using_gradients=True,
                          reset_func=generateBoard, healthBarWidth=10,
                          initial_color=(0, 190, 255), final_color=(255, 0, 255))
     window.mainloop()

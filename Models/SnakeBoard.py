@@ -9,11 +9,13 @@ class SnakeBoard:
 
     def __init__(self, board: Board = None, snakes: List[Snake] = None):
         self.board = board if board is not None else Board()
-        if snakes is not None:
-            self.snakeDict: Dict[str, Snake] = {snake.name: snake for snake in snakes}
-        else:
-            self.snakeDict: Dict[str, Snake] = {}
+        self.snakeDict: Dict[str, Snake] = {}
         self.point = None
+
+        if snakes is not None:
+            for snake in snakes:
+                self.addSnake(snake)
+            self.generatePoint()
 
     def addSnake(self, snake):
         """Adds a snake to the list of snakes."""
@@ -71,7 +73,7 @@ class SnakeBoard:
         names = list(self.snakeDict.keys())
         for snakeName in names:
             snake = self.snakeDict.get(snakeName)
-            self.move(snakeName=snakeName, direction=snake.controller.nextDirection(self.board, snake, self.point))
+            self.move(snakeName=snakeName, direction=snake.controller.nextDirection(self, snakeName))
 
     def isGameOver(self):
         """Whether or not the game is over. The game ends when no snakes are left."""

@@ -1,12 +1,13 @@
 import torch
 import torch.optim as optim
 import torch.nn as nn
+from Controllers.SnakeControllable import SnakeControllable
 from Models.SnakeBoard import SnakeBoard
 from Models.Snake import Snake
 from Models.Direction import Direction
 
 
-class GenericSnakeAI(nn.Module):
+class GenericSnakeAI(nn.Module, SnakeControllable):
     """A neural network that decides snake movements based on directions.
 
     Input lists should match the following structure:
@@ -57,6 +58,13 @@ class GenericSnakeAI(nn.Module):
         x = self.outputLayer(x)
         x = torch.sigmoid(x)
         return x
+
+    def nextDirection(self, snakeBoard: SnakeBoard, snakeName: str) -> Direction:
+        """Returns the next move to use given `snakeBoard` and `snakeName`."""
+        tensor = self.boardToTensor(snakeBoard, snakeName)
+        tensorResult = self.forward(tensor)
+        argmax = torch.argmax(tensorResult).item()
+        return Direction.moves()[argmax]
 
     def train(self, iterations=50, epochs=30, learningRate=0.05):
         """Trains the neural net to master Tic-Tac-Toe.
