@@ -6,6 +6,10 @@ from Models.SnakeBoard import SnakeBoard
 from Models.Snake import Snake
 from Models.Direction import Direction
 
+import matplotlib
+matplotlib.use("TkAgg")  # Using TkAgg to prevent issues with Tkinter SnakeWindow
+from matplotlib import pyplot as plt
+
 
 class GenericSnakeAI(nn.Module, SnakeControllable):
     """A neural network that decides snake movements based on directions.
@@ -66,32 +70,6 @@ class GenericSnakeAI(nn.Module, SnakeControllable):
         argmax = torch.argmax(tensorResult).item()
         return Direction.moves()[argmax]
 
-    def train(self, iterations=50, epochs=30, learningRate=0.05):
-        """Trains the neural net to master Tic-Tac-Toe.
-
-        Args:
-            iterations (int): The number of times to execute the training match.
-            epochs (int): The number of times to repeat `iterations`.
-            learningRate (float): The rate at which the neural network learns.
-
-        Returns:
-            (list, list): The loss history and epoch history after training.
-        """
-        self.lossHistory = []
-        optimizer = optim.SGD(self.parameters(), lr=learningRate, momentum=0.9)
-        epochHistory = []
-
-        for epoch in range(epochs):
-            if self.debug:
-                print(f"Epoch {epoch}. ", end='')
-            for iteration in range(iterations):
-                self.trainingMatch(optimizer)
-            if self.debug:
-                print(f"Average loss: {sum(self.lossHistory) / len(self.lossHistory)}.")
-            epochHistory.append(sum(self.lossHistory) / len(self.lossHistory))
-
-        return self.lossHistory, epochHistory
-
     def boardToTensor(self, gameBoard: SnakeBoard, snakeName: str):
         """Converts a board to a usable Tensor for input into the ANN.
 
@@ -121,22 +99,38 @@ class GenericSnakeAI(nn.Module, SnakeControllable):
         # Return the resulting tensor
         return torch.Tensor(results).to(self.device)
 
-    def trainingMatch(self, optimizer):
-        """Trains the network on a combination of matches.
 
-        Args:
-            optimizer: The optimizer for the neural network to use.
-        """
-        # Play a normal game
-        turnCount = 1
-        gameBoard = SnakeBoard()
-        gameBoard.addSnake(
-            Snake('AI', 'A',
-                  segments=[(self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 3),
-                            (self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 2),
-                            (self.snakeBoard.board.columns() // 2, self.snakeBoard.board.rows() - 1)],
-                  )
-        )
-        # TODO: Loop through and play game
+def main():
+    model = GenericSnakeAI()
+    from Controllers.Genetics.GeneticTrainer import GeneticTrainer
+    fitness_history = GeneticTrainer.train(model, steps=16, generations=64, workers=4, mutation_rate=0.2)
+
+    figure = plt.gcf()
+    figure.canvas.set_window_title("Genetic Training Results")
+    plt.title(f"Fitness History")
+    plt.grid(axis='y')
+    plt.ylabel("Max Fitness")
+    plt.xlabel("Generation")
+    plt.plot(fitness_history)
+    plt.show()
+
+    from Views.SnakeWindow import SnakeWindow
+
+    def get_board():
+        snakeBoard = SnakeBoard()
+        snake = Snake(name='AI', mark='X',
+                      segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
+                                (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
+                                (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 1)],
+                      controller=model, maxHealth=50)
+        snakeBoard.addSnake(snake)
+        snakeBoard.generatePoint()
+        return snakeBoard
+
+    board = get_board()
+    window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7, reset_func=get_board)
+    window.mainloop()
 
 
+if __name__ == '__main__':
+    main()

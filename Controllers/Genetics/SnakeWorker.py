@@ -70,7 +70,7 @@ class SnakeWorker:
     @staticmethod
     def fitness(score: int, turns: int) -> float:
         """Returns the snake fitness based on the moves given."""
-        return 1.8 ** score + 1.05 ** turns
+        return 1.85 ** score + 1.03 ** turns
 
     @staticmethod
     def generateDefaultBoard(controller) -> SnakeBoard:
