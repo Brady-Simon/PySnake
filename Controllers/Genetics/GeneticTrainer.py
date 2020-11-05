@@ -73,7 +73,11 @@ class GeneticTrainer:
         Returns:
             (dict, List[float]): The best state dictionary and the fitness history over training.
         """
-        states = [GeneticTrainer.randomize(initial_state_dict, mutation_rate) for _ in range(population)]
+        progress_bar = ProgressBar()
+        states = [initial_state_dict] * population
+        for state in states:
+            GeneticTrainer.randomize(state, mutation_rate)
+        # states = [GeneticTrainer.randomize(initial_state_dict, mutation_rate) for _ in range(population)]
         best_dict = {}
         fitness_history = []
         for generation in range(generations):
@@ -81,6 +85,8 @@ class GeneticTrainer:
                                                                                population, mutation_rate)
             fitness_history.append(best_fitness)
             states = next_population
+            progress_bar.printProgress(generation + 1, generations, length=16)
+
         return best_dict, fitness_history
 
     @staticmethod
@@ -115,6 +121,10 @@ class GeneticTrainer:
         for i in range(population):
             if fitness_history[i] > avg_fitness:
                 next_population.append(state_dicts[i])
+
+        # Ensure that there are enough parents by adding random parents if necessary.
+        while len(next_population) < population//2:
+            next_population.append(state_dicts[random.randint(0, len(state_dicts) - 1)])
 
         # Append any children
         parent_count = len(next_population)
