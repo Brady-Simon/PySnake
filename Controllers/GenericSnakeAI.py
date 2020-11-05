@@ -1,5 +1,4 @@
 import torch
-import torch.optim as optim
 import torch.nn as nn
 from Controllers.SnakeControllable import SnakeControllable
 from Models.SnakeBoard import SnakeBoard
@@ -36,7 +35,7 @@ class GenericSnakeAI(nn.Module, SnakeControllable):
         self.lossHistory = []
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-        inputSize: int = 8 + (2 * vision_radius + 1) ** 2
+        inputSize: int = 32
         hiddenSize1 = int(inputSize * 3 / 8)
         hiddenSize2 = int(hiddenSize1 * 3 / 5)
         # 32 20 12 4
@@ -80,30 +79,51 @@ class GenericSnakeAI(nn.Module, SnakeControllable):
         Returns:
             tensor: A 27-length tensor that represents the locations of X, O, and empty spaces.
         """
-        results = []
-        # Append the directions to point
-        pointDirections = gameBoard.directionsToPoint(pos=gameBoard.snakeDict.get(snakeName).head())
-        results.extend([1.0 if direction in pointDirections else 0.0 for direction in Direction.moves()])
-        # Append the current direction
-        currentDirection = gameBoard.directionFor(snakeName=snakeName)
-        results.extend([1.0 if currentDirection == direction else 0.0 for direction in Direction.moves()])
-        # Append vision grid
-        for y in range(-self.vision_radius, self.vision_radius + 1):
-            for x in range(-self.vision_radius, self.vision_radius + 1):
-                if not gameBoard.board.inBounds((x, y)):
-                    results.append(0.0)
-                elif not gameBoard.board.isEmpty((x, y)):
-                    results.append(0.0)
-                else:
-                    results.append(1.0)
-        # Return the resulting tensor
-        return torch.Tensor(results).to(self.device)
+        result = []
+        # Add the snake's current direction
+        result.extend([1.0 if gameBoard.directionFor(snakeName) == direction
+                       else 0.0 for direction in Direction.moves()])
+        # Add the direction to the point
+        directionsToPoint = gameBoard.directionsToPoint(gameBoard.snakeDict.get(snakeName).head())
+        result.extend([1.0 if direction in directionsToPoint else 0.0 for direction in Direction.moves()])
+        # Add the vision around snake
+        visionDeltas = [(0, -1), (1, -1), (1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1)]
+        head = gameBoard.snakeDict.get(snakeName).head()
+        for delta in visionDeltas:
+            result.extend(self.visionTo(gameBoard, head, delta))
+        return torch.Tensor(result)
+
+    @staticmethod
+    def visionTo(snakeBoard, head, delta) -> list:
+        result = [0.0, 0.0, 0.0]  # Food, body, empty/wall
+        pos = head
+        distance = 0
+        while snakeBoard.board.inBounds(pos):
+            pos = (pos[0] + delta[0], pos[1] + delta[1])
+            distance += 1
+            if snakeBoard.point == pos:
+                result[0] = 1.0
+            elif not snakeBoard.board.isEmpty:
+                result[1] = 1.0
+            # elif snakeBoard.board.isEmpty(pos):
+            #     result[2] = 1.0
+        result[2] = 1 / distance
+        return result
 
 
 def main():
     model = GenericSnakeAI()
+
     from Controllers.Genetics.GeneticTrainer import GeneticTrainer
-    fitness_history = GeneticTrainer.train(model, steps=16, generations=64, workers=4, mutation_rate=0.2)
+
+    def get_model():
+        return GenericSnakeAI()
+
+    # fitness_history, state_dict = GeneticTrainer.train(get_model, model.state_dict(),
+    #                                                    population=512, generations=8, workers=4, mutation_rate=0.05)
+    state_dict, fitness_history = GeneticTrainer.startSimulation(get_model, model.state_dict().copy(), population=512,
+                                                                 generations=8, mutation_rate=0.05)
+    model.load_state_dict(state_dict)
 
     figure = plt.gcf()
     figure.canvas.set_window_title("Genetic Training Results")

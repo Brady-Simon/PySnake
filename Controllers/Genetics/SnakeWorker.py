@@ -7,14 +7,15 @@ from Models.Color import Color
 
 
 class SnakeWorker:
+    """Manages a population of snakes."""
 
     @staticmethod
-    def simulate(model, steps: int = 1024, randomizer_step: int = 5, mutation_rate=0.05) -> (float, dict):
+    def simulate(model, population: int = 1024, randomizer_step: int = 1, mutation_rate=0.05) -> (float, dict):
         """Simulates several games of Snake from `board` using `model`.
 
         Args:
             model: The PyTorch model to use. Must also conform to SnakeControllable.
-            steps (int): The number of games to play.
+            population (int): The number of snakes to simulate.
             randomizer_step (int): How often to randomize the model weights.
             mutation_rate (float): The mutation rate of the genes.
                 Higher indicates more mutation. Usually in the range of 0...1.
@@ -22,14 +23,16 @@ class SnakeWorker:
         Returns:
             (float, dict): The max fitness for the given simulation and the accompanying state dictionary.
         """
+        fitness_dictionaries = []
         with torch.no_grad():
             # Copy the state dict so that other instances are not effected.
             state_dict = model.state_dict().copy()
             best_state_dict = state_dict.copy()
             max_fitness = 0
-            for step in range(steps):
+            for step in range(population):
                 move_counter = 0
                 current_score = 0
+                model.load_state_dict(state_dict)
                 snakeBoard = SnakeWorker.generateDefaultBoard(controller=model)
 
                 # Play the game until the snake dies
@@ -40,7 +43,7 @@ class SnakeWorker:
 
                 # Update the max fitness if applicable
                 fitness = SnakeWorker.fitness(current_score, move_counter)
-                if max_fitness < fitness:
+                if fitness > max_fitness:
                     # Snake was better; update values
                     max_fitness = fitness
                     best_state_dict = state_dict.copy()
@@ -48,7 +51,6 @@ class SnakeWorker:
                 # Randomize the state dict at regular intervals
                 if (step + 1) % randomizer_step == 0:
                     SnakeWorker.randomize(state_dict, mutation_rate)
-                    model.load_state_dict(state_dict)
 
         return max_fitness, best_state_dict
 
@@ -58,19 +60,19 @@ class SnakeWorker:
         for key in state_dict.keys():
             with torch.no_grad():
                 # Flatten mask and then reshape it
-                matrix = state_dict[key]
+                matrix = torch.flatten(state_dict[key])
                 mask = torch.flatten(torch.ones(matrix.size()))
-                mask = torch.Tensor([2 * random.random() - 1
-                                     if random.random() < mutation_rate
-                                     else num for num in mask])
-                mask = mask.reshape(matrix.size())
-                matrix *= mask
+                for i in range(len(matrix)):
+                    if random.random() < mutation_rate:
+                        matrix[i] = 2 * random.random() - 1
+                matrix = torch.reshape(matrix, state_dict[key].size())
                 state_dict[key] = matrix
 
     @staticmethod
     def fitness(score: int, turns: int) -> float:
         """Returns the snake fitness based on the moves given."""
-        return 1.85 ** score + 1.03 ** turns
+        # return 100 * score + turns
+        return turns + (2**score + score**2.1 * 500) - (score**1.2 * (0.25 * turns)**1.3)
 
     @staticmethod
     def generateDefaultBoard(controller) -> SnakeBoard:

@@ -19,12 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code.">
-      <change afterPath="$PROJECT_DIR$/Views/ProgressBar.py" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="GenericSnakeAI.py can now learn using GeneticTrainer.py.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/Genetics/SnakeWorker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/SnakeWorker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/SnakeControllable.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/SnakeControllable.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,6 +79,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="GeneticTrainer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PySnake" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers/Genetics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="SnakeAlgorithm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PySnake" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,27 +113,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/SnakeAlgorithm.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="SnakeBoard" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PySnake" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/SnakeBoard.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,10 +187,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.GenericSnakeAI" />
+        <item itemvalue="Python.GeneticTrainer" />
         <item itemvalue="Python.SnakeWindow" />
         <item itemvalue="Python.SnakeAlgorithm" />
         <item itemvalue="Python.SnakeWorker" />
-        <item itemvalue="Python.SnakeBoard" />
       </list>
     </recent_temporary>
   </component>
@@ -252,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604585551546</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="GenericSnakeAI.py can now learn using GeneticTrainer.py.">
+      <created>1604593243722</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1604593243722</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,7 +282,8 @@
     <MESSAGE value="Added a health bar to show the current health of hungry snakes.&#10;&#10;Also changed the default snake board generated in SnakeWindow.py to use the generateBoard() function." />
     <MESSAGE value="Added a score property to Snake.py that increments when the snake grows.&#10;&#10;Also added some more documentation on snake properties." />
     <MESSAGE value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
+    <MESSAGE value="GenericSnakeAI.py can now learn using GeneticTrainer.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="GenericSnakeAI.py can now learn using GeneticTrainer.py." />
   </component>
   <component name="WindowStateProjectService">
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
@@ -286,38 +294,38 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1604593196244">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1604614402961">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604593196244" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1604593196243">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604614402961" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1604614402960">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1604593196242">
+    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604614402960" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1604614402960">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604593196242" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1604593196243">
+    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604614402960" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1604614402961">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604614402961" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604585553075">
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604593245618">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604585553075" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604593245618" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604436282608">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1604436282608" />
-    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1604587654604">
+    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1604613607400">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1604587654604" />
+    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1604613607400" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
