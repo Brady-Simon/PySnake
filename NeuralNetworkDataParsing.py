@@ -1,5 +1,8 @@
 import math
 from random import randint
+import torch
+import numpy as np
+from torch import nn
 
 from Controllers.SnakeAlgorithm import SnakeAlgorithm
 
@@ -34,7 +37,7 @@ def getInputDataFromFile():
         isolatedInputs = isolatedLine.split("\t")[0] #Parses the single line to contain only the input data
         isolatedSingleInputs = isolatedInputs.split(" ")#Removes the " " and gives access to each input indiviually
         for k in range(len(isolatedSingleInputs)):
-            tempArray.append(isolatedSingleInputs[k])
+            tempArray.append(float(isolatedSingleInputs[k]))
         inputDataArray.append(tempArray)
     return inputDataArray
 
@@ -48,7 +51,7 @@ def getOutputDataFromFile():
         isolatedOutputs = isolatedLine.split("\t")[2]
         isolateSingleOutputs = isolatedOutputs.split(" ")
         for k in range(len(isolateSingleOutputs)):
-            tempArray.append(isolateSingleOutputs[k])
+            tempArray.append(float(isolateSingleOutputs[k]))
         outputDataArray.append(tempArray)
 
     return outputDataArray
@@ -105,7 +108,8 @@ def normalizeSnakeHeadAndFoodLocation(headLoc, pointLoc):
         return "0.875"
 
 def main():
-    print(getInputDataFromFile())
+    print(torch.FloatTensor(getInputDataFromFile()))
+    print(torch.FloatTensor(getOutputDataFromFile()))
 
 
 if __name__ == '__main__':
