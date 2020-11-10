@@ -19,12 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code.">
-      <change afterPath="$PROJECT_DIR$/Views/ProgressBar.py" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Models/NeuralNetwork.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NeuralNetworkDataParsing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PlayGame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Genetics/SnakeWorker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/SnakeWorker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Snake.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Snake.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SnakeBoard.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/SnakeBoard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/SnakeWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/SnakeWindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,10 +59,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NeuralNetworksP2" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.GenericSnakeAI">
-    <configuration name="GenericSnakeAI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.NeuralNetwork">
+    <configuration name="Board" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PySnake" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -66,11 +71,74 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/Board.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="NeuralNetwork" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PySnake" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/NeuralNetwork.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="NeuralNetworkDataParsing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PySnake" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NeuralNetworkDataParsing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PlayGame" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PySnake" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlayGame.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -92,69 +160,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/SnakeAlgorithm.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="SnakeBoard" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PySnake" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/SnakeBoard.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="SnakeWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PySnake" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Views" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Views/SnakeWindow.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="SnakeWorker" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PySnake" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers/Genetics" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/Genetics/SnakeWorker.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -186,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.GenericSnakeAI" />
-        <item itemvalue="Python.SnakeWindow" />
+        <item itemvalue="Python.NeuralNetwork" />
+        <item itemvalue="Python.PlayGame" />
+        <item itemvalue="Python.NeuralNetworkDataParsing" />
+        <item itemvalue="Python.Board" />
         <item itemvalue="Python.SnakeAlgorithm" />
-        <item itemvalue="Python.SnakeWorker" />
-        <item itemvalue="Python.SnakeBoard" />
       </list>
     </recent_temporary>
   </component>
@@ -278,6 +283,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2618" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604943742484">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2618" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1604943742484" />
+    <state x="3140" y="283" key="FileChooserDialogImpl" timestamp="1605027887148">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="3140" y="283" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605027887148" />
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -286,37 +299,64 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1604593196244">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="352" key="GridCell.Tab.0.bottom" timestamp="1605029502226">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="352" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
     <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604593196244" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1604593196243">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="352" key="GridCell.Tab.0.center" timestamp="1605029502226">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="352" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
     <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1604593196242">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="352" key="GridCell.Tab.0.left" timestamp="1605029502226">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="352" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
     <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604593196242" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1604593196243">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="352" key="GridCell.Tab.0.right" timestamp="1605029502226">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="352" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
     <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
+    <state width="1899" height="352" key="GridCell.Tab.1.bottom" timestamp="1605029502226">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
+    <state width="1899" height="352" key="GridCell.Tab.1.center" timestamp="1605029502226">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="352" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
+    <state width="1899" height="352" key="GridCell.Tab.1.left" timestamp="1605029502226">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="352" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
+    <state width="1899" height="352" key="GridCell.Tab.1.right" timestamp="1605029502226">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="352" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
+    <state x="2660" y="227" key="RollbackChangesDialog" timestamp="1604941921913">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2660" y="227" key="RollbackChangesDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1604941921913" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604585553075">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="2347" y="170" key="Vcs.Push.Dialog.v2" timestamp="1604937662649">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
+    <state x="2347" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1604937662649" />
     <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604585553075" />
-    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604436282608">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="2611" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604940971829">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
+    <state x="2611" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1604940971829" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1604436282608" />
-    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1604587654604">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="2433" y="173" width="894" height="878" key="search.everywhere.popup" timestamp="1605024299368">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
+    <state x="2433" y="173" width="894" height="878" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605024299368" />
     <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1604587654604" />
   </component>
   <component name="XDebuggerManager">

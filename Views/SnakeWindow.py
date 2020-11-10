@@ -1,10 +1,12 @@
 import tkinter as tk
+from random import randint
 from typing import Tuple
 from Controllers.SnakeAlgorithm import SnakeAlgorithm
 from Models.SnakeBoard import SnakeBoard
 from Models.Direction import Direction
 from Models.Snake import Snake
 from Models.Color import Color
+import NeuralNetworkDataParsing as DataParsing
 
 
 class SnakeWindow(tk.Frame):
@@ -15,7 +17,8 @@ class SnakeWindow(tk.Frame):
                  using_gradients: bool = False, reset_func=None,
                  initial_color: Tuple[int, int, int] = (0, 190, 255),
                  final_color: Tuple[int, int, int] = (255, 255, 255),
-                 healthBarWidth: int = 5):
+                 healthBarWidth: int = 5,
+                 writeBoardToFile: bool = False):
         """Creates a visual representation of a Snake game.
 
         Args:
@@ -40,6 +43,7 @@ class SnakeWindow(tk.Frame):
         self.using_gradients = using_gradients
         self.initial_color = initial_color
         self.final_color = final_color
+        self.writeBoardToFile = writeBoardToFile
         if master is None:
             self.master = tk.Tk()
             self.master.title("Slithery Snake")
@@ -105,10 +109,16 @@ class SnakeWindow(tk.Frame):
                 startingWidth += 5
 
     def updateDirection(self, event):
+        ##GERALD ADDED THIS PRINT STATEMENT
+        """Write current game state to board if True"""
+        if self.writeBoardToFile:
+            DataParsing.writeToFile(self.snakeBoard, event.char)
         """Updates the local `nextDirection` based on the key-press event."""
         direction = Direction.fromChar(event.char)
         if not direction.isOpposite(self.direction) and direction != Direction.none:
             self.nextDirection = direction
+
+
 
     def updateGame(self):
         """Updates the window with board changes at set `fps` intervals."""
@@ -169,7 +179,7 @@ class SnakeWindow(tk.Frame):
 def generateBoard() -> SnakeBoard:
     """Generates an example `SnakeBoard` to use for training."""
     snakeBoard = SnakeBoard()
-    snake = Snake(name='P1', mark=Color.colorize('X', Color.cyan),
+    snake = Snake(name='P1', mark='X',
                   segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
                             (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
                             (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 1)],
@@ -180,7 +190,7 @@ def generateBoard() -> SnakeBoard:
 
 
 def main():
-    window = SnakeWindow(humanControllable=False, fps=20, blockSize=50,
+    window = SnakeWindow(humanControllable=False, fps=1, blockSize=50,
                          outlines_enabled=False, using_gradients=True,
                          reset_func=generateBoard, healthBarWidth=10,
                          initial_color=(0, 190, 255), final_color=(255, 0, 255))
