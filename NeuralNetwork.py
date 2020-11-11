@@ -69,7 +69,7 @@ class NeuralNetwork():
         headLoc = snakeBoard.snakeDict.get('P1').head()
         pointLoc = snakeBoard.point
         # if(randomInt == 1):
-        print(f"Size: {self.getLengthOfSnake(snakeBoard)}")
+        print(f"Size: {self.getNormalizedLengthOfSnake(snakeBoard)}")
         if (True):
             self.normalizeSnakeHeadAndFoodLocation(headLoc, pointLoc)
             RawBoardFile = open("RawBoardFile.txt", "a")
@@ -77,13 +77,13 @@ class NeuralNetwork():
             RawBoardFile.write(str(self.isDirectionSafe(snakeBoard, "down")) + " ")
             RawBoardFile.write(str(self.isDirectionSafe(snakeBoard, "left")) + " ")
             RawBoardFile.write(str(self.isDirectionSafe(snakeBoard, "right")) + " ")
-            RawBoardFile.write(str(self.getLengthOfSnake(snakeBoard)) + " ")
+            RawBoardFile.write(str(self.getNormalizedLengthOfSnake(snakeBoard)) + " ")
             RawBoardFile.write(str(self.normalizeSnakeHeadAndFoodLocation(headLoc,
                                                                      pointLoc)) + "\t\t")  ##Writes normalized angle between head and food
-            print(self.interpetEvent(event))
+            print(f"Interpret event: {self.interpetEvent(event)}")
             RawBoardFile.write(self.interpetEvent(event) + "\n")  ##Writes the chosen move
             RawBoardFile.close()
-            print(self.normalizeSnakeHeadAndFoodLocation(snakeBoard.snakeDict.get('P1').head(), snakeBoard.point))
+            print(f"Normalized angle: {self.normalizeSnakeHeadAndFoodLocation(snakeBoard.snakeDict.get('P1').head(), snakeBoard.point)} \n")
 
     def getInputDataFromFile(self):
         file = open("RawBoardFile.txt", "r")
@@ -115,7 +115,7 @@ class NeuralNetwork():
 
         return outputDataArray
 
-    def getLengthOfSnake(snakeboard):
+    def getNormalizedLengthOfSnake(snakeboard):
         """returns the normalized length of the snake
         returns int/100"""
         return str(snakeboard.board).count("X") / 100
@@ -164,12 +164,16 @@ class NeuralNetwork():
             return "0.875"
 
 def main():
+
+    #To train model
     bot = NeuralNetwork()
-    bot.trainModel(100000)
+    bot.trainModel(10000)
+
+    #To test model given data
     testData = torch.tensor([[0, 1, 0, 1, 0.5, 0.375]], dtype=torch.float)
     print(bot.testModel(testData))
 
-
+##To generate new training data refer to PlayGame.py
 
 
 if __name__ == '__main__':
