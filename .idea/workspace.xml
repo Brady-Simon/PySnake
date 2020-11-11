@@ -22,11 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Changed the way SnakeWindow.py writes to files for NeuralNetwork.py.">
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py.">
+      <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile - Backup.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/RawBoardFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RawBoardFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/SnakeWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/SnakeWindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,14 +270,7 @@
       <option name="project" value="LOCAL" />
       <updated>1604614514936</updated>
     </task>
-    <task id="LOCAL-00010" summary="Changed the way SnakeWindow.py writes to files for NeuralNetwork.py.">
-      <created>1605119777286</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1605119777286</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -300,14 +295,9 @@
     <MESSAGE value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
     <MESSAGE value="GenericSnakeAI.py can now learn using GeneticTrainer.py." />
     <MESSAGE value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
-    <MESSAGE value="Changed the way SnakeWindow.py writes to files for NeuralNetwork.py." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the way SnakeWindow.py writes to files for NeuralNetwork.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="458" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605120378817">
-      <screen x="0" y="23" width="1440" height="809" />
-    </state>
-    <state x="458" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.809@0.23.1440.809" timestamp="1605120378817" />
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -316,46 +306,55 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1605120774992">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="289" key="GridCell.Tab.0.bottom" timestamp="1605125128098">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605120774992" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1605120774991">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605125128098" />
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605119398428" />
+    <state width="1899" height="289" key="GridCell.Tab.0.center" timestamp="1605125128098">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605120774991" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1605120774991">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="289" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605125128098" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605119398427" />
+    <state width="1899" height="289" key="GridCell.Tab.0.left" timestamp="1605125128098">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605120774991" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1605120774992">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="289" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605125128098" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605119398427" />
+    <state width="1899" height="289" key="GridCell.Tab.0.right" timestamp="1605125128098">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605120774992" />
+    <state width="1899" height="289" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605125128098" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605119398428" />
     <state x="144" y="93" key="MergeDialog" timestamp="1605118661012">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="144" y="93" key="MergeDialog/0.23.1440.809@0.23.1440.809" timestamp="1605118661012" />
+    <state x="740" y="227" key="RollbackChangesDialog" timestamp="1605121480130">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="227" key="RollbackChangesDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605121480130" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605119778875">
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604614517107">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605119778875" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604614517107" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605118651276">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1605118651276" />
-    <state x="468" y="147" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605121121788">
+    <state x="468" y="147" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605117241652">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="468" y="147" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.809@0.23.1440.809" timestamp="1605121121788" />
-    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1605120313682">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="468" y="147" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.809@0.23.1440.809" timestamp="1605117241652" />
+    <state x="513" y="173" width="894" height="878" key="search.everywhere.popup" timestamp="1605121302639">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1605120313682" />
+    <state x="513" y="173" width="894" height="878" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605121302639" />
+    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1605118977686" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
