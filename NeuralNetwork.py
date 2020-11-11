@@ -2,8 +2,12 @@ import torch
 import numpy as np
 from torch import nn
 from random import randint
+from Models.SnakeBoard import SnakeBoard
+from Models.Snake import Snake
+from Views.SnakeWindow import SnakeWindow
+from Models.Direction import Direction
 
-class NeuralNetwork():
+class NeuralNetwork:
 
     def __init__(self):
         torch.manual_seed(1)
@@ -163,13 +167,44 @@ class NeuralNetwork():
         else:
             return "0.875"
 
+    def nextDirection(self, snakeBoard: SnakeBoard, snakeName: str) -> Direction:
+        data = []
+        # Need to get data from a specfic snake: snakeBoard.snakeDict.get(snakeName)
+        output = self.testModel(data)
+        answer = self.interpretOutput(output)
+        return answer
+
+    def interpretOutput(self, output) -> Direction:
+        """Convert the numpy array `output` into a usable Direction."""
+        pass
+
+
+
+def generateBoard(controller) -> SnakeBoard:
+    """Generates an example `SnakeBoard` to use for training."""
+    snakeBoard = SnakeBoard()
+    snake = Snake(name='P1', mark='X',
+                  segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
+                            (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
+                            (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 1)],
+                  controller=controller, maxHealth=50)
+    snakeBoard.addSnake(snake)
+    snakeBoard.generatePoint()
+    return snakeBoard
+
+
 def main():
+
     bot = NeuralNetwork()
     bot.trainModel(100000)
-    testData = torch.tensor([[0, 1, 0, 1, 0.5, 0.375]], dtype=torch.float)
-    print(bot.testModel(testData))
 
+    # testData = torch.tensor([[0, 1, 0, 1, 0.5, 0.375]], dtype=torch.float)
+    # print(bot.testModel(testData))
 
+    board = generateBoard(bot)
+    reset_func = lambda: generateBoard(bot)
+    window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7, reset_func=reset_func)
+    window.mainloop()
 
 
 if __name__ == '__main__':

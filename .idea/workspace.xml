@@ -20,12 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added a bunch of stuff for Gerald's attempt at a NN snake.&#10;Added: &#10;-Testing data generator&#10;-Textfile that contains testing data&#10;-Started NN&#10;&#10;Not working:&#10;-Text file can be written to but not read?&#10;-NN">
-      <change afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RawBoardFile - Backup.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RawBoardFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/NeuralNetwork.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeuralNetworkDataParsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetworkDataParsing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlayGame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../NeuralNetworksP2" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -349,25 +348,25 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2660" y="227" key="RollbackChangesDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1604941921913" />
-    <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
+    <state x="221" y="66" key="SettingsEditor" timestamp="1605114747231">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
+    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1605114747231" />
     <state x="2347" y="170" key="Vcs.Push.Dialog.v2" timestamp="1605029610572">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2347" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029610572" />
     <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604585553075" />
-    <state x="2611" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605038019319">
-      <screen x="1920" y="0" width="1920" height="1050" />
+    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605112890402">
+      <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="2611" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605038019319" />
-    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1604436282608" />
-    <state x="2433" y="173" width="894" height="878" key="search.everywhere.popup" timestamp="1605024299368">
-      <screen x="1920" y="0" width="1920" height="1050" />
+    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1605112890402" />
+    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1605116409067">
+      <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="2433" y="173" width="894" height="878" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605024299368" />
-    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1604587654604" />
+    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1605116409067" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
