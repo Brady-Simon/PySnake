@@ -111,15 +111,16 @@ class SnakeWindow(tk.Frame):
     def updateDirection(self, event):
         """Updates the local `nextDirection` based on the key-press event."""
         direction = Direction.fromChar(event.char)
+
+        # Write current game state to the file if True
+        if self.writeBoardToFile:
+            DataParsing.writeToFile(self.snakeBoard, self.direction.toChar())
+
         if not direction.isOpposite(self.direction) and direction != Direction.none:
             self.nextDirection = direction
 
     def updateGame(self):
         """Updates the window with board changes at set `fps` intervals."""
-
-        # Write current game state to the file if True
-        if self.writeBoardToFile:
-            DataParsing.writeToFile(self.snakeBoard, self.nextDirection.toChar())
 
         if self.humanControllable:
             # Update the direction of the snake based on human WASD input.
