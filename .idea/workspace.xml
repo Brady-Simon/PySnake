@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,13 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added a bunch of stuff for Gerald's attempt at a NN snake.&#10;Added: &#10;-Testing data generator&#10;-Textfile that contains testing data&#10;-Started NN&#10;&#10;Not working:&#10;-Text file can be written to but not read?&#10;-NN">
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py.">
       <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/SnakeControllable.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/SnakeControllable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Direction.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Direction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RawBoardFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RawBoardFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/SnakeWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/SnakeWindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="population_changes" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,16 +60,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NeuralNetworksP2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gerald Arenas\PycharmProjects\PySnake" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Python.NeuralNetwork (1)">
-    <configuration name="Board" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.PlayGame">
+    <configuration name="GenericSnakeAI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PySnake" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -73,11 +71,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/Board.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -86,7 +84,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="NeuralNetwork (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="GeneticTrainer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PySnake" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -94,11 +92,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers/Genetics" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NeuralNetwork.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -115,32 +113,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Gerald Arenas\PycharmProjects\PySnake\NeuralNetwork.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="NeuralNetworkDataParsing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PySnake" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NeuralNetworkDataParsing.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NeuralNetwork.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -162,6 +139,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlayGame.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SnakeWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PySnake" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Views" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Views/SnakeWindow.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -193,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.NeuralNetwork (1)" />
-        <item itemvalue="Python.NeuralNetworkDataParsing" />
-        <item itemvalue="Python.NeuralNetwork" />
         <item itemvalue="Python.PlayGame" />
-        <item itemvalue="Python.Board" />
+        <item itemvalue="Python.NeuralNetwork" />
+        <item itemvalue="Python.GenericSnakeAI" />
+        <item itemvalue="Python.GeneticTrainer" />
+        <item itemvalue="Python.SnakeWindow" />
       </list>
     </recent_temporary>
   </component>
@@ -259,14 +257,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604585551546</updated>
     </task>
-    <task id="LOCAL-00008" summary="Added a bunch of stuff for Gerald's attempt at a NN snake.&#10;Added: &#10;-Testing data generator&#10;-Textfile that contains testing data&#10;-Started NN&#10;&#10;Not working:&#10;-Text file can be written to but not read?&#10;-NN">
-      <created>1605029609056</created>
+    <task id="LOCAL-00008" summary="GenericSnakeAI.py can now learn using GeneticTrainer.py.">
+      <created>1604593243722</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1605029609056</updated>
+      <updated>1604593243722</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py.">
+      <created>1604614514936</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1604614514936</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -289,18 +294,11 @@
     <MESSAGE value="Added a health bar to show the current health of hungry snakes.&#10;&#10;Also changed the default snake board generated in SnakeWindow.py to use the generateBoard() function." />
     <MESSAGE value="Added a score property to Snake.py that increments when the snake grows.&#10;&#10;Also added some more documentation on snake properties." />
     <MESSAGE value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
-    <MESSAGE value="Added a bunch of stuff for Gerald's attempt at a NN snake.&#10;Added: &#10;-Testing data generator&#10;-Textfile that contains testing data&#10;-Started NN&#10;&#10;Not working:&#10;-Text file can be written to but not read?&#10;-NN" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a bunch of stuff for Gerald's attempt at a NN snake.&#10;Added: &#10;-Testing data generator&#10;-Textfile that contains testing data&#10;-Started NN&#10;&#10;Not working:&#10;-Text file can be written to but not read?&#10;-NN" />
+    <MESSAGE value="GenericSnakeAI.py can now learn using GeneticTrainer.py." />
+    <MESSAGE value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2618" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604943742484">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2618" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1604943742484" />
-    <state x="3140" y="283" key="FileChooserDialogImpl" timestamp="1605036697569">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="3140" y="283" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605036697569" />
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -309,70 +307,46 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1899" height="281" key="GridCell.Tab.0.bottom" timestamp="1605118325671">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1899" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605118325671" />
-    <state width="1899" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605037560685" />
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604593196244" />
-    <state width="1899" height="281" key="GridCell.Tab.0.center" timestamp="1605118325671">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1899" height="281" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605118325671" />
-    <state width="1899" height="244" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605037560685" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
-    <state width="1899" height="281" key="GridCell.Tab.0.left" timestamp="1605118325671">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1899" height="281" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605118325670" />
-    <state width="1899" height="244" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605037560685" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604593196242" />
-    <state width="1899" height="281" key="GridCell.Tab.0.right" timestamp="1605118325671">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1899" height="281" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605118325671" />
-    <state width="1899" height="244" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605037560685" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
-    <state width="1899" height="352" key="GridCell.Tab.1.bottom" timestamp="1605029502226">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1899" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
-    <state width="1899" height="352" key="GridCell.Tab.1.center" timestamp="1605029502226">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1899" height="352" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
-    <state width="1899" height="352" key="GridCell.Tab.1.left" timestamp="1605029502226">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1899" height="352" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
-    <state width="1899" height="352" key="GridCell.Tab.1.right" timestamp="1605029502226">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1899" height="352" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029502226" />
-    <state x="2660" y="227" key="RollbackChangesDialog" timestamp="1604941921913">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2660" y="227" key="RollbackChangesDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1604941921913" />
-    <state x="295" y="56" key="SettingsEditor" timestamp="1605116696220">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="295" y="56" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605116696220" />
-    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1605114747231" />
-    <state x="2347" y="170" key="Vcs.Push.Dialog.v2" timestamp="1605029610572">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2347" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605029610572" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604585553075" />
-    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605112890402">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1605119398428">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="2611" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605038019319" />
-    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1605112890402" />
-    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1605116409067">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605119398428" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1605119398427">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="2433" y="173" width="894" height="878" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605024299368" />
-    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1605116409067" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605119398427" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1605119398427">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605119398427" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1605119398428">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605119398428" />
+    <state x="144" y="93" key="MergeDialog" timestamp="1605118661012">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="144" y="93" key="MergeDialog/0.23.1440.809@0.23.1440.809" timestamp="1605118661012" />
+    <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604614517107">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604614517107" />
+    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605118651276">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1605118651276" />
+    <state x="468" y="147" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605117241652">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="468" y="147" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.809@0.23.1440.809" timestamp="1605117241652" />
+    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1605118977686">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1605118977686" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -214,7 +214,7 @@ def generateBoard(controller) -> SnakeBoard:
 def main():
 
     bot = NeuralNetwork()
-    bot.trainModel(100000)
+    bot.trainModel(20000)
 
     # testData = torch.tensor([[0, 1, 0, 1, 0.5, 0.375]], dtype=torch.float)
     # print(bot.testModel(testData))
