@@ -5,6 +5,7 @@ import numpy as np
 from torch import nn
 
 from Controllers.SnakeAlgorithm import SnakeAlgorithm
+# TODO: There is duplicate code in NeuralNetwork.py, this copy is being used by SnakeWindow.py
 
 
 def writeToFile(snakeBoard, event):
