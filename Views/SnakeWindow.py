@@ -17,7 +17,7 @@ class SnakeWindow(tk.Frame):
                  using_gradients: bool = False, reset_func=None,
                  initial_color: Tuple[int, int, int] = (0, 190, 255),
                  final_color: Tuple[int, int, int] = (255, 255, 255),
-                 healthBarWidth: int = 5,
+                 healthBarWidth: int = 5, on_update=None,
                  writeBoardToFile: bool = False):
         """Creates a visual representation of a Snake game.
 
@@ -33,6 +33,7 @@ class SnakeWindow(tk.Frame):
             initial_color: The color to use for the head of the snake.
             final_color: The color to use for the tail of the snake. Only relevant if `usingGradients` is `True`.
             healthBarWidth (int): The width in pixels for the health bar for hungry snakes.
+            on_update: A function that is called after each update and returns the current `SnakeWindow`.
         """
 
         self.humanControllable = humanControllable
@@ -43,6 +44,7 @@ class SnakeWindow(tk.Frame):
         self.using_gradients = using_gradients
         self.initial_color = initial_color
         self.final_color = final_color
+        self.on_update = on_update
         self.writeBoardToFile = writeBoardToFile
         if master is None:
             self.master = tk.Tk()
@@ -118,6 +120,8 @@ class SnakeWindow(tk.Frame):
 
         if not direction.isOpposite(self.direction) and direction != Direction.none:
             self.nextDirection = direction
+            if self.on_update is not None:
+                self.on_update(self)
 
     def updateGame(self):
         """Updates the window with board changes at set `fps` intervals."""
