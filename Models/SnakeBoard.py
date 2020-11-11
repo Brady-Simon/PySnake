@@ -87,7 +87,7 @@ class SnakeBoard:
             pos, mark = self.board.random()
         # Update the point position
         self.point = pos
-        self.board.place(Color.colorize('0', Color.red), pos)
+        self.board.place('0', pos)
 
     def safeDirections(self, snakeName: str) -> List[Direction]:
         """Returns a list of safe directions to move for the snake with `snakeName`."""
@@ -124,14 +124,14 @@ class SnakeBoard:
 
 
 
-def main():
-    snakeBoard = SnakeBoard()
-    snake = Snake(name='Player1', mark=Color.colorize('X', Color.cyan), segments=[(1, 3), (1, 2), (1, 1)])
-    snakeBoard.addSnake(snake)
-    snakeBoard.generatePoint()
-    print(snakeBoard.board)
-    print(f"Direction: {snakeBoard.directionFor('Player1')}")
-
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     snakeBoard = SnakeBoard()
+#     snake = Snake(name='Player1', mark=Color.colorize('X', Color.cyan), segments=[(1, 3), (1, 2), (1, 1)])
+#     snakeBoard.addSnake(snake)
+#     snakeBoard.generatePoint()
+#     print(snakeBoard.board)
+#     print(f"Direction: {snakeBoard.directionFor('Player1')}")
+#
+#
+# if __name__ == '__main__':
+#     main()

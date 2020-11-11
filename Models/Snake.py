@@ -48,7 +48,7 @@ class Snake:
         else:
             return self.segments[0]
 
-    def grow(self, size: int = 3):
+    def grow(self, size: int = 1):
         """Grows the snake by the given `size`.
 
         Args:

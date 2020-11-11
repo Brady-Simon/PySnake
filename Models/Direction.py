@@ -30,3 +30,15 @@ class Direction(Enum):
             return Direction.right
         else:
             return Direction.none
+
+    def toChar(self) -> str:
+        if self == Direction.up:
+            return "w"
+        elif self == Direction.left:
+            return "a"
+        elif self == Direction.down:
+            return "s"
+        elif self == Direction.right:
+            return "d"
+        else:
+            return "n"
