@@ -6,8 +6,9 @@ from Models.SnakeBoard import SnakeBoard
 from Models.Snake import Snake
 from Views.SnakeWindow import SnakeWindow
 from Models.Direction import Direction
+from Controllers.SnakeControllable import SnakeControllable
 
-class NeuralNetwork:
+class NeuralNetwork(SnakeControllable):
 
     def __init__(self):
         torch.manual_seed(1)
@@ -65,7 +66,6 @@ class NeuralNetwork:
         convertedToNumpy = predicted_output.detach().numpy()
         print(convertedToNumpy)
 
-        #print("Max value: ", np.argmax(convertedToNumpy))
         return np.argmax(convertedToNumpy)
 
     def writeToFile(self, snakeBoard, event):
@@ -119,12 +119,12 @@ class NeuralNetwork:
 
         return outputDataArray
 
-    def getLengthOfSnake(snakeboard):
+    def getLengthOfSnake(self, snakeboard):
         """returns the normalized length of the snake
         returns int/100"""
         return str(snakeboard.board).count("X") / 100
 
-    def interpetEvent(event):
+    def interpetEvent(self, event):
         if event == 'w':
             return "1 0 0 0\tUp"
         elif event == 's':
@@ -134,13 +134,13 @@ class NeuralNetwork:
         else:
             return "0 0 0 1\tRight"
 
-    def isDirectionSafe(snakeBoard, direction):
+    def isDirectionSafe(self, snakeBoard, direction):
         stringToBeExamined = str(snakeBoard.safeDirections('P1'))
         if direction in stringToBeExamined:
             return 1
         return 0
 
-    def normalizeSnakeHeadAndFoodLocation(headLoc, pointLoc):
+    def normalizeSnakeHeadAndFoodLocation(self, headLoc, pointLoc):
         """Finds the angle FROM the head TO the food. Then normalizes the angle to a number between 0 and 1"""
         headX = headLoc[0]
         headY = headLoc[1]
@@ -168,15 +168,33 @@ class NeuralNetwork:
             return "0.875"
 
     def nextDirection(self, snakeBoard: SnakeBoard, snakeName: str) -> Direction:
+        headLoc = snakeBoard.snakeDict.get(snakeName).head()
+        pointLoc = snakeBoard.point
         data = []
         # Need to get data from a specfic snake: snakeBoard.snakeDict.get(snakeName)
+        data.append(self.isDirectionSafe(snakeBoard, "up"))
+        data.append(self.isDirectionSafe(snakeBoard, "down"))
+        data.append(self.isDirectionSafe(snakeBoard, "left"))
+        data.append(self.isDirectionSafe(snakeBoard, "right"))
+        data.append(float(self.getLengthOfSnake(snakeBoard)))
+        data.append(float(self.normalizeSnakeHeadAndFoodLocation(headLoc, pointLoc)))
+        data = torch.FloatTensor(data)
         output = self.testModel(data)
-        answer = self.interpretOutput(output)
-        return answer
+        return self.interpretOutput(output)
 
     def interpretOutput(self, output) -> Direction:
-        """Convert the numpy array `output` into a usable Direction."""
-        pass
+        """Convert the argmax `output` into a usable Direction."""
+        if output == 0:
+            return Direction.up
+        elif output == 1:
+            return Direction.down
+        elif output == 2:
+            return Direction.left
+        elif output == 3:
+            return Direction.right
+        else:
+            return Direction.none
+
 
 
 

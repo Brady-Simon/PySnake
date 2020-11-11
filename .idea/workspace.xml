@@ -23,8 +23,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/SnakeControllable.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/SnakeControllable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlayGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlayGame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RawBoardFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +57,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../NeuralNetworksP2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -308,24 +309,28 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1899" height="244" key="GridCell.Tab.0.bottom" timestamp="1605037560685">
-      <screen x="1920" y="0" width="1920" height="1050" />
+    <state width="1899" height="281" key="GridCell.Tab.0.bottom" timestamp="1605118325671">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605118325671" />
     <state width="1899" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605037560685" />
     <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1604593196244" />
-    <state width="1899" height="244" key="GridCell.Tab.0.center" timestamp="1605037560685">
-      <screen x="1920" y="0" width="1920" height="1050" />
+    <state width="1899" height="281" key="GridCell.Tab.0.center" timestamp="1605118325671">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="281" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605118325671" />
     <state width="1899" height="244" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605037560685" />
     <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
-    <state width="1899" height="244" key="GridCell.Tab.0.left" timestamp="1605037560685">
-      <screen x="1920" y="0" width="1920" height="1050" />
+    <state width="1899" height="281" key="GridCell.Tab.0.left" timestamp="1605118325671">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="281" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605118325670" />
     <state width="1899" height="244" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605037560685" />
     <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1604593196242" />
-    <state width="1899" height="244" key="GridCell.Tab.0.right" timestamp="1605037560685">
-      <screen x="1920" y="0" width="1920" height="1050" />
+    <state width="1899" height="281" key="GridCell.Tab.0.right" timestamp="1605118325671">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="281" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605118325671" />
     <state width="1899" height="244" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1605037560685" />
     <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
     <state width="1899" height="352" key="GridCell.Tab.1.bottom" timestamp="1605029502226">
@@ -348,9 +353,10 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2660" y="227" key="RollbackChangesDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1604941921913" />
-    <state x="221" y="66" key="SettingsEditor" timestamp="1605114747231">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="295" y="56" key="SettingsEditor" timestamp="1605116696220">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="295" y="56" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605116696220" />
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1605114747231" />
     <state x="2347" y="170" key="Vcs.Push.Dialog.v2" timestamp="1605029610572">
       <screen x="1920" y="0" width="1920" height="1050" />
