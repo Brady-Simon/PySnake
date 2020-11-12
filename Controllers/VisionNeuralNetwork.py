@@ -213,7 +213,7 @@ def main():
         # Load the snake window and add data as it comes
         model = VisionNeuralNetwork()
         window = SnakeWindow(fps=5, using_gradients=True, healthBarWidth=10, reset_func=reset_func,
-                             on_update=lambda w: update_file(model.file_name, w))
+                             on_direction_change=lambda w: update_file(model.file_name, w))
         window.mainloop()
     else:
         # Train the model and play the game
