@@ -22,11 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py.">
-      <change afterPath="$PROJECT_DIR$/Controllers/VisionBoardFile.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Made a Neural Network based off Gerald's manual data strategy called VisionNeuralNetwork.py.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/SnakeWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/SnakeWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/VisionBoardFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/VisionBoardFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -273,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604614514936</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Made a Neural Network based off Gerald's manual data strategy called VisionNeuralNetwork.py.">
+      <created>1605125855930</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605125855930</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -298,7 +304,8 @@
     <MESSAGE value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
     <MESSAGE value="GenericSnakeAI.py can now learn using GeneticTrainer.py." />
     <MESSAGE value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
+    <MESSAGE value="Made a Neural Network based off Gerald's manual data strategy called VisionNeuralNetwork.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made a Neural Network based off Gerald's manual data strategy called VisionNeuralNetwork.py." />
   </component>
   <component name="WindowStateProjectService">
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
@@ -309,34 +316,34 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1605125806869">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1605143761077">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605125806869" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1605125806868">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605143761077" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1605143761076">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605125806868" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1605125806868">
+    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605143761076" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1605143761076">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605125806868" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1605125806869">
+    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605143761076" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1605143761077">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605125806869" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605143761077" />
     <state x="358" y="196" key="MultipleFileMergeDialog" timestamp="1605121277445">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="358" y="196" key="MultipleFileMergeDialog/0.23.1440.809@0.23.1440.809" timestamp="1605121277445" />
-    <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
+    <state x="221" y="66" key="SettingsEditor" timestamp="1605142948892">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604614517107">
+    <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1605142948892" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605125857652">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604614517107" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605125857652" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604436282608">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

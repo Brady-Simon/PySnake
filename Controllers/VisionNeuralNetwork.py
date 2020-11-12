@@ -1,12 +1,11 @@
 import torch
-import numpy as np
 from torch import nn
-from random import randint
 from Models.SnakeBoard import SnakeBoard
 from Models.Snake import Snake
 from Views.SnakeWindow import SnakeWindow
 from Models.Direction import Direction
 from Controllers.SnakeControllable import SnakeControllable
+from Views.ProgressBar import ProgressBar
 
 
 class VisionNeuralNetwork(nn.Module, SnakeControllable):
@@ -46,33 +45,23 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
         return x
 
     def train(self, iterations: int = 10000, debug: bool = False):
+        progressBar = ProgressBar()
         for i in range(iterations):
             # Forward pass: Compute predicted y by passing x to the model
             predicted_output = self.forward(self.test_input_data)
 
             # Compute and print loss
             loss = self.loss_func(predicted_output, self.test_output_data)
-            if debug:
-                print(f"Iteration: {i}, loss: {loss}")
+            if debug and (i + 1) % 1000 == 0:
+                print('\r' + progressBar.getProgressBar(i + 1, iterations), "{0:.4f} loss".format(loss), end='')
 
             # Zero gradients and propagate loss backwards
             self.optimizer.zero_grad()
             loss.backward()
             self.optimizer.step()
-
-    # def writeToFile(self, snakeBoard: SnakeBoard, nextDirection: Direction):
-    #     """Writes the board and its predicted output to the file."""
-    #
-    #     tensor = self.boardToTensor(snakeBoard, self.snakeName)
-    #     file = open(self.file_name, "a")
-    #
-    #     for point in tensor:
-    #         file.write(f"{point} ")
-    #     file.write("- ")  # Separator between input/output
-    #     for direction in Direction.moves():
-    #         file.write(f"{1.0 if direction == nextDirection else 0.0 }")
-    #
-    #     file.close()
+        # Print an extra line at the end to make sure the progress bar isn't interrupted
+        if debug:
+            print()
 
     def getInputDataFromFile(self):
         file = open(self.file_name, "r")
@@ -83,7 +72,6 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
             isolatedLine = file.readline().strip()  # Examines one line at a time
             isolatedInputs = isolatedLine.split("-")[0]  # Parses the single line to contain only the input data
             isolatedInputs = isolatedInputs.strip()
-            print(isolatedInputs)
             isolatedSingleInputs = isolatedInputs.split(
                 " ")  # Removes the " " and gives access to each input individually
             for k in range(len(isolatedSingleInputs)):
@@ -194,7 +182,8 @@ def update_file(file_name: str, snake_window: SnakeWindow):
 def main():
 
     file_name = "VisionBoardFile.txt"
-    iterations = 10000
+    iterations = 5000
+    learning_rate = 0.0001
     trainingModel = True
     looping = True
 
@@ -209,7 +198,7 @@ def main():
         else:
             print("Input not recognized.")
 
-    model = VisionNeuralNetwork()
+    model = VisionNeuralNetwork(learning_rate=learning_rate)
     if trainingModel:
         # Load the snake window and add data as it comes
         model = VisionNeuralNetwork()
@@ -219,7 +208,7 @@ def main():
         window.mainloop()
     else:
         # Train the model and play the game
-        model.train(iterations)
+        model.train(iterations, debug=True)
         board = generateBoard(model)
         reset_func = lambda: generateBoard(model)
         window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7,
