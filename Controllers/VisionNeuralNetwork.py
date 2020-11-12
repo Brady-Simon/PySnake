@@ -11,28 +11,27 @@ from Views.ProgressBar import ProgressBar
 
 class VisionNeuralNetwork(nn.Module, SnakeControllable):
 
-    def __init__(self, learning_rate=0.01, snakeName: str = 'P1', file_name: str = "VisionBoardFile.txt"):
+    def __init__(self, snakeName: str = 'P1', file_name: str = "VisionBoardFile.txt"):
         super().__init__()
         torch.manual_seed(1)
 
         # Learning parameters
-        # self.epoch = 1000
-        self.learning_rate = learning_rate
         self.snakeName = snakeName
         self.file_name = file_name
 
         # Input Tensor and output data
-        self.test_input_data = self.getInputDataFromFile()
-        self.test_output_data = self.getOutputDataFromFile()
-        self.numberOfInputs = len(self.test_input_data)
+        # self.test_input_data = self.getInputDataFromFile()
+        # self.test_output_data = self.getOutputDataFromFile()
+        # self.numberOfInputs = len(self.test_input_data)
+        self.test_input_data = []
+        self.test_output_data = []
+        self.numberOfInputs = 0
 
         # Learning weights and algorithm
         self.loss_func = torch.nn.MSELoss()
-        self.inputLayer = nn.Linear(32, 20)
-        self.hiddenLayer = nn.Linear(20, 12)
+        self.inputLayer = nn.Linear(36, 24)
+        self.hiddenLayer = nn.Linear(24, 12)
         self.outputLayer = nn.Linear(12, 4)
-
-        self.optimizer = torch.optim.SGD(self.parameters(), lr=self.learning_rate)
 
     def forward(self, x):
         x = self.inputLayer(x)
@@ -45,8 +44,17 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
         x = torch.sigmoid(x)
         return x
 
-    def train(self, iterations: int = 10000, batch_size: int = 64, debug: bool = False):
+    def loadTrainingData(self):
+        """Loads the input and output data from `self.file_name`."""
+        # Input Tensor and output data
+        self.test_input_data = self.getInputDataFromFile()
+        self.test_output_data = self.getOutputDataFromFile()
+        self.numberOfInputs = len(self.test_input_data)
+
+    def train(self, iterations: int = 10000, batch_size: int = 64, learning_rate: float = 0.01, debug: bool = False):
+
         progressBar = ProgressBar()
+        optimizer = torch.optim.SGD(self.parameters(), lr=learning_rate, momentum=0.9)
         for i in range(iterations):
             # Forward pass: Compute predicted y by passing x to the model
             start = random.randint(0, len(self.test_input_data) - batch_size)
@@ -61,9 +69,9 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
                 print('\r' + progressBar.getProgressBar(i + 1, iterations), "{0:.4f} loss".format(loss), end='')
 
             # Zero gradients and propagate loss backwards
-            self.optimizer.zero_grad()
+            optimizer.zero_grad()
             loss.backward()
-            self.optimizer.step()
+            optimizer.step()
         # Print an extra line at the end to make sure the progress bar isn't interrupted
         if debug:
             print()
@@ -117,16 +125,19 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
             snakeName (str): The name of the snake to control.
 
         Returns:
-            tensor: A 27-length tensor that represents the locations of X, O, and empty spaces.
+            tensor: A 36-length tensor that represents the locations of X, O, and empty spaces.
         """
         result = []
-        # Add the snake's current direction
+        # Add the snake's current direction (4)
         result.extend([1.0 if gameBoard.directionFor(snakeName) == direction
                        else 0.0 for direction in Direction.moves()])
-        # Add the direction to the point
+        # Add the safe directions (4)
+        safeDirections = gameBoard.safeDirections(snakeName)
+        result.extend([1.0 if direction in safeDirections else 0.0 for direction in Direction.moves()])
+        # Add the direction to the point (4)
         directionsToPoint = gameBoard.directionsToPoint(gameBoard.snakeDict.get(snakeName).head())
         result.extend([1.0 if direction in directionsToPoint else 0.0 for direction in Direction.moves()])
-        # Add the vision around snake
+        # Add the vision around snake (8x3=24)
         visionDeltas = [(0, -1), (1, -1), (1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1)]
         head = gameBoard.snakeDict.get(snakeName).head()
         for delta in visionDeltas:
@@ -185,43 +196,58 @@ def update_file(file_name: str, snake_window: SnakeWindow):
     file.close()
 
 
-def main():
+def offerToSaveModel(model):
+    answer = input("Would you like to save this new model? (y/n): ")
+    if answer.lower() == 'y':
+        torch.save(model, 'vision_neural_network_model')
+        print("Model was saved.")
 
+
+def main():
     file_name = "VisionBoardFile.txt"
-    iterations = 100000
+    model_file = 'vision_neural_network_model'
+    iterations = 20000
     learning_rate = 0.005
-    trainingModel = True
+    batch_size = 64
+    gatheringData = True
     looping = True
 
-    while looping:
-        answer = input("Are you trying to load more data? (y/n): ")
-        if answer.lower() == 'y':
-            trainingModel = True
-            looping = False
-        elif answer.lower() == 'n':
-            trainingModel = False
-            looping = False
-        else:
-            print("Input not recognized.")
-
-    model = VisionNeuralNetwork(learning_rate=learning_rate)
+    model = VisionNeuralNetwork(file_name=file_name)
 
     def reset_func():
         return generateBoard(model)
 
-    if trainingModel:
-        # Load the snake window and add data as it comes
-        model = VisionNeuralNetwork()
-        window = SnakeWindow(fps=5, using_gradients=True, healthBarWidth=10, reset_func=reset_func,
-                             on_direction_change=lambda w: update_file(model.file_name, w))
-        window.mainloop()
-    else:
-        # Train the model and play the game
-        model.train(iterations, batch_size=32, debug=True)
-        board = generateBoard(model)
-        window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7,
-                             healthBarWidth=10, reset_func=reset_func, using_gradients=True)
-        window.mainloop()
+    while looping:
+        answer = input("Select an option:\n"
+                       + "  1. Create more data\n"
+                       + "  2. Load existing model\n"
+                       + "  3. Train new model\n"
+                       + "<1|2|3>: ")
+        if answer == '1':
+            # Create more data
+            window = SnakeWindow(fps=5, using_gradients=True, healthBarWidth=10, reset_func=reset_func,
+                                 on_direction_change=lambda w: update_file(model.file_name, w))
+            window.mainloop()
+            looping = False
+        elif answer == '2':
+            # Load existing model
+            model = torch.load(model_file)
+            model.eval()
+            board = generateBoard(model)
+            window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7,
+                                 reset_func=reset_func, using_gradients=True)
+            window.mainloop()
+            looping = False
+        elif answer == '3':
+            # Train a new model
+            model.loadTrainingData()
+            model.train(iterations, batch_size=batch_size, learning_rate=learning_rate, debug=True)
+            board = generateBoard(model)
+            window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7,
+                                 reset_func=reset_func, using_gradients=True)
+            window.mainloop()
+            offerToSaveModel(model)
+            looping = False
 
 
 if __name__ == '__main__':
