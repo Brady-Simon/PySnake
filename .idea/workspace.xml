@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Renamed SnakeWindow.on_update to SnakeWindow.on_direction_change to properly reflect when it is called.">
-      <change afterPath="$PROJECT_DIR$/Controllers/vision_neural_network_model" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/VisionBoardFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/VisionBoardFile.txt" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="VisionNeuralNetwork.py now knows safe directions, and the main method now has a cleaner interface.">
       <change beforePath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -322,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605200697348</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="VisionNeuralNetwork.py now knows safe directions, and the main method now has a cleaner interface.">
+      <created>1605204455901</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1605204455901</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -352,7 +356,8 @@
     <MESSAGE value="Added batch sizes and removed shuffling, which reduced peformance." />
     <MESSAGE value="Added batch sizes and removed shuffling, which reduced performance." />
     <MESSAGE value="Renamed SnakeWindow.on_update to SnakeWindow.on_direction_change to properly reflect when it is called." />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed SnakeWindow.on_update to SnakeWindow.on_direction_change to properly reflect when it is called." />
+    <MESSAGE value="VisionNeuralNetwork.py now knows safe directions, and the main method now has a cleaner interface." />
+    <option name="LAST_COMMIT_MESSAGE" value="VisionNeuralNetwork.py now knows safe directions, and the main method now has a cleaner interface." />
   </component>
   <component name="WindowStateProjectService">
     <state x="376" y="236" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605203476879">
@@ -391,10 +396,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1605142948892" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605200700219">
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605204457593">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605200700219" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605204457593" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604436282608">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

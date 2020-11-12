@@ -111,10 +111,11 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
 
     def nextDirection(self, snakeBoard: SnakeBoard, snakeName: str) -> Direction:
         """Returns the next move to use given `snakeBoard` and `snakeName`."""
-        tensor = self.boardToTensor(snakeBoard, snakeName)
-        tensorResult = self.forward(tensor)
-        argmax = torch.argmax(tensorResult).item()
-        return Direction.moves()[argmax]
+        with torch.no_grad():
+            tensor = self.boardToTensor(snakeBoard, snakeName)
+            tensorResult = self.forward(tensor)
+            argmax = torch.argmax(tensorResult).item()
+            return Direction.moves()[argmax]
 
     @staticmethod
     def boardToTensor(gameBoard: SnakeBoard, snakeName: str):
