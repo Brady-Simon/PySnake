@@ -22,12 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py.">
-      <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Optimized snake training data... in process">
+      <change afterPath="$PROJECT_DIR$/RawBoardFile - BackupBestSoFarV2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RawBoardFile - V3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RawBoardFile - Backup.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlayGame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RawBoardFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RawBoardFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +58,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gerald Arenas\PycharmProjects\PySnake" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.NeuralNetwork">
     <configuration name="GenericSnakeAI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -270,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604614514936</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Optimized snake training data... in process">
+      <created>1605125880878</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605125880878</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -295,7 +307,8 @@
     <MESSAGE value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
     <MESSAGE value="GenericSnakeAI.py can now learn using GeneticTrainer.py." />
     <MESSAGE value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
+    <MESSAGE value="Optimized snake training data... in process" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimized snake training data... in process" />
   </component>
   <component name="WindowStateProjectService">
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
@@ -306,25 +319,25 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1899" height="289" key="GridCell.Tab.0.bottom" timestamp="1605125128098">
+    <state width="1899" height="289" key="GridCell.Tab.0.bottom" timestamp="1605205425292">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605125128098" />
+    <state width="1899" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605205425292" />
     <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605119398428" />
-    <state width="1899" height="289" key="GridCell.Tab.0.center" timestamp="1605125128098">
+    <state width="1899" height="289" key="GridCell.Tab.0.center" timestamp="1605205425292">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="289" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605125128098" />
+    <state width="1899" height="289" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605205425292" />
     <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605119398427" />
-    <state width="1899" height="289" key="GridCell.Tab.0.left" timestamp="1605125128098">
+    <state width="1899" height="289" key="GridCell.Tab.0.left" timestamp="1605205425292">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="289" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605125128098" />
+    <state width="1899" height="289" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605205425292" />
     <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605119398427" />
-    <state width="1899" height="289" key="GridCell.Tab.0.right" timestamp="1605125128098">
+    <state width="1899" height="289" key="GridCell.Tab.0.right" timestamp="1605205425292">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="289" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605125128098" />
+    <state width="1899" height="289" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605205425292" />
     <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605119398428" />
     <state x="144" y="93" key="MergeDialog" timestamp="1605118661012">
       <screen x="0" y="23" width="1440" height="809" />
@@ -338,9 +351,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604614517107">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="427" y="170" key="Vcs.Push.Dialog.v2" timestamp="1605206094599">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="427" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605206094599" />
     <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604614517107" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605118651276">
       <screen x="0" y="23" width="1440" height="809" />
