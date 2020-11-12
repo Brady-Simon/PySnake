@@ -22,8 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="VisionNeuralNetwork.py now knows safe directions, and the main method now has a cleaner interface.">
-      <change beforePath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Made VisionNeuralNetwork.nextDirection use torch.no_grad() for a performance increase.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +63,7 @@
       <recent name="$PROJECT_DIR$/Controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.VisionNeuralNetwork">
+  <component name="RunManager" selected="Python.GenericSnakeAI">
     <configuration name="GenericSnakeAI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PySnake" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -190,10 +192,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.VisionNeuralNetwork" />
-        <item itemvalue="Python.SnakeWindow" />
         <item itemvalue="Python.GenericSnakeAI" />
         <item itemvalue="Python.GeneticTrainer" />
+        <item itemvalue="Python.VisionNeuralNetwork" />
+        <item itemvalue="Python.SnakeWindow" />
         <item itemvalue="Python.SnakeAlgorithm" />
       </list>
     </recent_temporary>
@@ -326,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605204455901</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Made VisionNeuralNetwork.nextDirection use torch.no_grad() for a performance increase.">
+      <created>1605204750720</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1605204750720</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -357,7 +366,8 @@
     <MESSAGE value="Added batch sizes and removed shuffling, which reduced performance." />
     <MESSAGE value="Renamed SnakeWindow.on_update to SnakeWindow.on_direction_change to properly reflect when it is called." />
     <MESSAGE value="VisionNeuralNetwork.py now knows safe directions, and the main method now has a cleaner interface." />
-    <option name="LAST_COMMIT_MESSAGE" value="VisionNeuralNetwork.py now knows safe directions, and the main method now has a cleaner interface." />
+    <MESSAGE value="Made VisionNeuralNetwork.nextDirection use torch.no_grad() for a performance increase." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made VisionNeuralNetwork.nextDirection use torch.no_grad() for a performance increase." />
   </component>
   <component name="WindowStateProjectService">
     <state x="376" y="236" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605203476879">
@@ -372,22 +382,22 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1605204348079">
+    <state width="1419" height="175" key="GridCell.Tab.0.bottom" timestamp="1605207910289">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605204348079" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1605204348078">
+    <state width="1419" height="175" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605207910289" />
+    <state width="1419" height="175" key="GridCell.Tab.0.center" timestamp="1605207910289">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605204348078" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1605204348078">
+    <state width="1419" height="175" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605207910289" />
+    <state width="1419" height="175" key="GridCell.Tab.0.left" timestamp="1605207910288">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605204348078" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1605204348079">
+    <state width="1419" height="175" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605207910288" />
+    <state width="1419" height="175" key="GridCell.Tab.0.right" timestamp="1605207910289">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605204348079" />
+    <state width="1419" height="175" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605207910289" />
     <state x="358" y="196" key="MultipleFileMergeDialog" timestamp="1605121277445">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -396,10 +406,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1605142948892" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605204457593">
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605204752003">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605204457593" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605204752003" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604436282608">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

@@ -1,3 +1,4 @@
+import copy
 import torch
 import random
 from typing import List
@@ -27,7 +28,7 @@ class GeneticTrainer:
         fitness_history = []
         progress_bar = ProgressBar()
         best_fitness: float = 0.0
-        best_state_dict: dict = initial_state_dict.copy()
+        best_state_dict: dict = initial_state_dict
         for generation in range(generations):
             # A list of tuples: (fitness: float, state_dict: dict)
             training_results = []
@@ -44,15 +45,14 @@ class GeneticTrainer:
             first_place = training_results[0]
             second_place = training_results[1]
             crossover_dict = GeneticTrainer.crossover(first_place[1], second_place[1], mutation_rate)
+
             # Update the model's state dictionary and continue the cycle
             if first_place[0] > best_fitness:
-                # The current model outperformed the best model
                 best_fitness = first_place[0]
                 best_state_dict = first_place[1]
-                model.load_state_dict(best_state_dict)
-            else:
-                # Continue to use the crossover model until performance is beaten
-                model.load_state_dict(crossover_dict)
+
+            # Continue to use the crossover model
+            model.load_state_dict(crossover_dict)
             fitness_history.append(first_place[0])
             progress_bar.printProgress(generation + 1, generations, 16)
         # Return the fitness history for graphing
@@ -74,10 +74,9 @@ class GeneticTrainer:
             (dict, List[float]): The best state dictionary and the fitness history over training.
         """
         progress_bar = ProgressBar()
-        states = [initial_state_dict] * population
+        states = [copy.deepcopy(initial_state_dict) for _ in range(population)]
         for state in states:
             GeneticTrainer.randomize(state, mutation_rate)
-        # states = [GeneticTrainer.randomize(initial_state_dict, mutation_rate) for _ in range(population)]
         best_dict = {}
         fitness_history = []
         for generation in range(generations):
@@ -96,7 +95,7 @@ class GeneticTrainer:
         Returns:
             (dict, float, List[dict]): The best snake, its fitness, and the next state dictionary populations to use.
         """
-        new_state_dicts = state_dicts.copy()
+        new_state_dicts = [copy.deepcopy(state) for state in state_dicts]
         for state in new_state_dicts:
             GeneticTrainer.randomize(state, mutation_rate)
         # Run the simulations
@@ -120,11 +119,11 @@ class GeneticTrainer:
         # Add the snakes that were above average fitness
         for i in range(population):
             if fitness_history[i] > avg_fitness:
-                next_population.append(state_dicts[i])
+                next_population.append(copy.deepcopy(state_dicts[i]))
 
         # Ensure that there are enough parents by adding random parents if necessary.
         while len(next_population) < population//2:
-            next_population.append(state_dicts[random.randint(0, len(state_dicts) - 1)])
+            next_population.append(copy.deepcopy(state_dicts[random.randint(0, len(state_dicts) - 1)]))
 
         # Append any children
         parent_count = len(next_population)
@@ -154,8 +153,9 @@ class GeneticTrainer:
         """Returns the hybrid of the two state dictionaries.
         Ensure that the two state dictionaries and values are the same size.
         """
-        crossover_result = state_dict1.copy()
-        parent = state_dict2.copy()
+
+        crossover_result = copy.deepcopy(state_dict1)
+        parent = copy.deepcopy(state_dict2)
         for key in state_dict1.keys():
             with torch.no_grad():
                 # Flatten mask and then reshape it
@@ -214,10 +214,15 @@ class GeneticTrainer:
 def main():
     # Ensure that crossover works properly.
     # There should be a mix of 1's, 2's, and potentially a random number or more.
-    dict1 = {'weights': torch.Tensor([[1, 1, 1], [1, 1, 1]])}
-    dict2 = {'weights': torch.Tensor([[2, 2, 2], [2, 2, 2]])}
+    dict1 = {'weights': torch.Tensor([[1, 1, 1], [1, 1, 1], [1, 1, 1]])}
+    dict2 = {'weights': torch.Tensor([[2, 2, 2], [2, 2, 2], [2, 2, 2]])}
     crossover = GeneticTrainer.crossover(dict1, dict2, mutation_rate=0.4)
     print(crossover.get('weights'))
+
+    # Randomize the weights
+    print(dict1.get('weights'))
+    GeneticTrainer.randomize(dict1, mutation_rate=0.5)
+    print(dict1.get('weights'))
 
 
 if __name__ == '__main__':
