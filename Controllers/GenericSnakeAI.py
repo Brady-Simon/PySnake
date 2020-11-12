@@ -119,16 +119,20 @@ def main():
     model = GenericSnakeAI()
 
     vision_model: VisionNeuralNetwork = torch.load('vision_neural_network_model')
-    initial_state_dict = vision_model.state_dict().copy()
-    model.load_state_dict(initial_state_dict)
+    initial_state_dict = model.state_dict()
+    # initial_state_dict = vision_model.state_dict().copy()
+    # model.load_state_dict(initial_state_dict)
 
     from Controllers.Genetics.GeneticTrainer import GeneticTrainer
 
     def get_model():
         return GenericSnakeAI()
 
+    # state_dict, fitness_history = GeneticTrainer.train(model, population=256, generations=32,
+    #                                                    workers=8, mutation_rate=0.05)
+
     state_dict, fitness_history = GeneticTrainer.startSimulation(get_model, initial_state_dict=initial_state_dict,
-                                                                 population=256, generations=64, mutation_rate=0.05)
+                                                                 population=64, generations=256, mutation_rate=0.05)
     model.load_state_dict(state_dict)
 
     figure = plt.gcf()

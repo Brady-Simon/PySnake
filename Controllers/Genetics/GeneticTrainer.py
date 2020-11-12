@@ -13,13 +13,12 @@ from Models.Color import Color
 class GeneticTrainer:
 
     @staticmethod
-    def train(get_model, initial_state_dict, population: int = 1024,
-              generations: int = 256, workers: int = 8, mutation_rate=0.05) -> (List[float], dict):
+    def train(model, population: int = 1024, generations: int = 256,
+              workers: int = 8, mutation_rate=0.05) -> (dict, List[float]):
         """Trains the given `model` for a given number of `generations` with asynchronous `workers`.
 
         Args:
-            get_model: The function to get a PyTorch model to train. Must also conform to SnakeControllable.
-            initial_state_dict: The initial state dictionary to use with the model.
+            model: The PyTorch model to train. Must also conform to SnakeControllable.
             population (int): The number of snakes total.
             generations (int): The total number of crossover events to have.
             workers (int): The number of concurrent threads with which to train.
@@ -28,15 +27,16 @@ class GeneticTrainer:
         fitness_history = []
         progress_bar = ProgressBar()
         best_fitness: float = 0.0
-        best_state_dict: dict = initial_state_dict
+        best_state_dict: dict = copy.deepcopy(model.state_dict())
+
         for generation in range(generations):
             # A list of tuples: (fitness: float, state_dict: dict)
             training_results = []
             with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
                 # Append all of the training results and wait for completion
                 for i in range(workers):
-                    model = get_model()
-                    model.load_state_dict(best_state_dict.copy())
+                    # model = get_model()
+                    model.load_state_dict(copy.deepcopy(best_state_dict))
                     executor.submit(lambda: training_results.append(
                         SnakeWorker.simulate(model, population, mutation_rate=mutation_rate)))
             # Take the highest two and crossover
@@ -49,14 +49,14 @@ class GeneticTrainer:
             # Update the model's state dictionary and continue the cycle
             if first_place[0] > best_fitness:
                 best_fitness = first_place[0]
-                best_state_dict = first_place[1]
+                best_state_dict = copy.deepcopy(first_place[1])
 
             # Continue to use the crossover model
             model.load_state_dict(crossover_dict)
             fitness_history.append(first_place[0])
             progress_bar.printProgress(generation + 1, generations, 16)
         # Return the fitness history for graphing
-        return fitness_history, best_state_dict
+        return best_state_dict, fitness_history
 
     @staticmethod
     def startSimulation(get_model, initial_state_dict, population: int = 512,
