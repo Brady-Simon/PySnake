@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Made a Neural Network based off Gerald's manual data strategy called VisionNeuralNetwork.py.">
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added a progress bar while training VisionNeuralNetwork.py.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/VisionBoardFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/VisionBoardFile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/VisionNeuralNetwork.py" afterDir="false" />
@@ -279,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605125855930</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added a progress bar while training VisionNeuralNetwork.py.">
+      <created>1605143847194</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605143847194</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -305,7 +312,8 @@
     <MESSAGE value="GenericSnakeAI.py can now learn using GeneticTrainer.py." />
     <MESSAGE value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
     <MESSAGE value="Made a Neural Network based off Gerald's manual data strategy called VisionNeuralNetwork.py." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made a Neural Network based off Gerald's manual data strategy called VisionNeuralNetwork.py." />
+    <MESSAGE value="Added a progress bar while training VisionNeuralNetwork.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a progress bar while training VisionNeuralNetwork.py." />
   </component>
   <component name="WindowStateProjectService">
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
@@ -316,22 +324,22 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1605143761077">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1605152080083">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605143761077" />
-    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1605143761076">
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605152080083" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1605152080082">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605143761076" />
-    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1605143761076">
+    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605152080082" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1605152080082">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605143761076" />
-    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1605143761077">
+    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605152080082" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1605152080082">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605143761077" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605152080082" />
     <state x="358" y="196" key="MultipleFileMergeDialog" timestamp="1605121277445">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -340,10 +348,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1605142948892" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605125857652">
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605143849165">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605125857652" />
+    <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605143849165" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604436282608">
       <screen x="0" y="23" width="1440" height="809" />
     </state>

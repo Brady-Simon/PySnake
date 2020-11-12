@@ -1,4 +1,5 @@
 import torch
+import random
 from torch import nn
 from Models.SnakeBoard import SnakeBoard
 from Models.Snake import Snake
@@ -21,9 +22,9 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
         self.file_name = file_name
 
         # Input Tensor and output data
-        self.test_input_data = torch.FloatTensor(self.getInputDataFromFile())
-        self.test_output_data = torch.FloatTensor(self.getOutputDataFromFile())
-        self.numberOfInputs = self.test_input_data.shape[1]
+        self.test_input_data = self.getInputDataFromFile()
+        self.test_output_data = self.getOutputDataFromFile()
+        self.numberOfInputs = len(self.test_input_data)
 
         # Learning weights and algorithm
         self.loss_func = torch.nn.MSELoss()
@@ -44,14 +45,18 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
         x = torch.sigmoid(x)
         return x
 
-    def train(self, iterations: int = 10000, debug: bool = False):
+    def train(self, iterations: int = 10000, batch_size: int = 64, debug: bool = False):
         progressBar = ProgressBar()
         for i in range(iterations):
             # Forward pass: Compute predicted y by passing x to the model
-            predicted_output = self.forward(self.test_input_data)
+            start = random.randint(0, len(self.test_input_data) - batch_size)
+            end = start + batch_size
+            model_input = torch.FloatTensor(self.test_input_data[start:end])
+            expected_output = torch.FloatTensor(self.test_output_data[start:end])
+            predicted_output = self.forward(model_input)
 
             # Compute and print loss
-            loss = self.loss_func(predicted_output, self.test_output_data)
+            loss = self.loss_func(predicted_output, expected_output)
             if debug and (i + 1) % 1000 == 0:
                 print('\r' + progressBar.getProgressBar(i + 1, iterations), "{0:.4f} loss".format(loss), end='')
 
@@ -77,6 +82,7 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
             for k in range(len(isolatedSingleInputs)):
                 tempArray.append(float(isolatedSingleInputs[k]))
             inputDataArray.append(tempArray)
+        # Return the list of inputs
         return inputDataArray
 
     def getOutputDataFromFile(self):
@@ -92,7 +98,7 @@ class VisionNeuralNetwork(nn.Module, SnakeControllable):
             for k in range(len(isolateSingleOutputs)):
                 tempArray.append(float(isolateSingleOutputs[k]))
             outputDataArray.append(tempArray)
-
+        # Return the list of outputs
         return outputDataArray
 
     def nextDirection(self, snakeBoard: SnakeBoard, snakeName: str) -> Direction:
@@ -160,7 +166,7 @@ def generateBoard(controller, name='P1', mark='X') -> SnakeBoard:
 
 def update_file(file_name: str, snake_window: SnakeWindow):
     """Writes the board and its predicted output to the file."""
-    nextDirection = snake_window.direction
+    nextDirection = snake_window.nextDirection
     board = snake_window.snakeBoard
 
     tensor = VisionNeuralNetwork.boardToTensor(board, 'P1')
@@ -182,8 +188,8 @@ def update_file(file_name: str, snake_window: SnakeWindow):
 def main():
 
     file_name = "VisionBoardFile.txt"
-    iterations = 5000
-    learning_rate = 0.0001
+    iterations = 100000
+    learning_rate = 0.005
     trainingModel = True
     looping = True
 
@@ -199,20 +205,22 @@ def main():
             print("Input not recognized.")
 
     model = VisionNeuralNetwork(learning_rate=learning_rate)
+
+    def reset_func():
+        return generateBoard(model)
+
     if trainingModel:
         # Load the snake window and add data as it comes
         model = VisionNeuralNetwork()
-        window = SnakeWindow(fps=5, using_gradients=True,
-                             healthBarWidth=10,
+        window = SnakeWindow(fps=5, using_gradients=True, healthBarWidth=10, reset_func=reset_func,
                              on_update=lambda w: update_file(model.file_name, w))
         window.mainloop()
     else:
         # Train the model and play the game
-        model.train(iterations, debug=True)
+        model.train(iterations, batch_size=32, debug=True)
         board = generateBoard(model)
-        reset_func = lambda: generateBoard(model)
         window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7,
-                             reset_func=reset_func, using_gradients=True)
+                             healthBarWidth=10, reset_func=reset_func, using_gradients=True)
         window.mainloop()
 
 
