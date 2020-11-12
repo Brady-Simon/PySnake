@@ -124,14 +124,14 @@ class SnakeBoard:
 
 
 
-# def main():
-#     snakeBoard = SnakeBoard()
-#     snake = Snake(name='Player1', mark=Color.colorize('X', Color.cyan), segments=[(1, 3), (1, 2), (1, 1)])
-#     snakeBoard.addSnake(snake)
-#     snakeBoard.generatePoint()
-#     print(snakeBoard.board)
-#     print(f"Direction: {snakeBoard.directionFor('Player1')}")
-#
-#
-# if __name__ == '__main__':
-#     main()
+def main():
+    snakeBoard = SnakeBoard()
+    snake = Snake(name='Player1', mark=Color.colorize('X', Color.cyan), segments=[ (4,1), (4,2), (4,3)])
+    snakeBoard.addSnake(snake)
+    snakeBoard.generatePoint()
+    print(snakeBoard.board)
+    print(f"Safe: {snakeBoard.safeDirections('Player1')}")
+
+
+if __name__ == '__main__':
+    main()

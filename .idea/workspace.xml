@@ -22,12 +22,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Optimized snake training data... in process">
-      <change afterPath="$PROJECT_DIR$/RawBoardFile - BackupBestSoFarV2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RawBoardFile - V3.txt" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Created some more data files. This may be the best performance that is possible given the snakes vision. To see it, run, NeuralNetwork.py.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Direction.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Direction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SnakeBoard.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/SnakeBoard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeuralNetworkDataParsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetworkDataParsing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlayGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/PlayGame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RawBoardFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RawBoardFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile - Backup2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile - BackupAlwaysUp17K.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile - BackupBestSoFar750.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile - BackupBestSoFarV2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile - V3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile -Backup3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RawBoardFile.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="population_changes" />
+        <entry key="$PROJECT_DIR$" value="GeraldSnake" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -151,7 +159,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="SnakeWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="SnakeBoard" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PySnake" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -159,11 +167,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Views" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Views/SnakeWindow.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/SnakeBoard.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -197,9 +205,9 @@
       <list>
         <item itemvalue="Python.NeuralNetwork" />
         <item itemvalue="Python.PlayGame" />
+        <item itemvalue="Python.SnakeBoard" />
         <item itemvalue="Python.GenericSnakeAI" />
         <item itemvalue="Python.GeneticTrainer" />
-        <item itemvalue="Python.SnakeWindow" />
       </list>
     </recent_temporary>
   </component>
@@ -282,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605125880878</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Created some more data files. This may be the best performance that is possible given the snakes vision. To see it, run, NeuralNetwork.py.">
+      <created>1605206143293</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605206143293</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -308,9 +323,14 @@
     <MESSAGE value="GenericSnakeAI.py can now learn using GeneticTrainer.py." />
     <MESSAGE value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
     <MESSAGE value="Optimized snake training data... in process" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimized snake training data... in process" />
+    <MESSAGE value="Created some more data files. This may be the best performance that is possible given the snakes vision. To see it, run, NeuralNetwork.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created some more data files. This may be the best performance that is possible given the snakes vision. To see it, run, NeuralNetwork.py." />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605207440417">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605207440417" />
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -319,25 +339,25 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1899" height="289" key="GridCell.Tab.0.bottom" timestamp="1605205425292">
+    <state width="1899" height="271" key="GridCell.Tab.0.bottom" timestamp="1605212127320">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605205425292" />
+    <state width="1899" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605212127320" />
     <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605119398428" />
-    <state width="1899" height="289" key="GridCell.Tab.0.center" timestamp="1605205425292">
+    <state width="1899" height="271" key="GridCell.Tab.0.center" timestamp="1605212127320">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="289" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605205425292" />
+    <state width="1899" height="271" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605212127320" />
     <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605119398427" />
-    <state width="1899" height="289" key="GridCell.Tab.0.left" timestamp="1605205425292">
+    <state width="1899" height="271" key="GridCell.Tab.0.left" timestamp="1605212127320">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="289" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605205425292" />
+    <state width="1899" height="271" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605212127320" />
     <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605119398427" />
-    <state width="1899" height="289" key="GridCell.Tab.0.right" timestamp="1605205425292">
+    <state width="1899" height="271" key="GridCell.Tab.0.right" timestamp="1605212127320">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="289" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605205425292" />
+    <state width="1899" height="271" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605212127320" />
     <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605119398428" />
     <state x="144" y="93" key="MergeDialog" timestamp="1605118661012">
       <screen x="0" y="23" width="1440" height="809" />
@@ -351,10 +371,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
-    <state x="427" y="170" key="Vcs.Push.Dialog.v2" timestamp="1605206094599">
+    <state x="427" y="170" key="Vcs.Push.Dialog.v2" timestamp="1605206145070">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="427" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605206094599" />
+    <state x="427" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605206145070" />
     <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604614517107" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605118651276">
       <screen x="0" y="23" width="1440" height="809" />

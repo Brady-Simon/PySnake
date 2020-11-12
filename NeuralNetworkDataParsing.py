@@ -21,7 +21,11 @@ def writeToFile(snakeBoard, event):
         RawBoardFile.write(str(isDirectionSafe(snakeBoard, "down")) + " ")
         RawBoardFile.write(str(isDirectionSafe(snakeBoard, "left")) + " ")
         RawBoardFile.write(str(isDirectionSafe(snakeBoard, "right")) + " ")
-        RawBoardFile.write(str(getLengthOfSnake(snakeBoard)) + " ")
+        RawBoardFile.write(str(isDirectionSafe(snakeBoard, "UL")) + " ")
+        RawBoardFile.write(str(isDirectionSafe(snakeBoard, "UR")) + " ")
+        RawBoardFile.write(str(isDirectionSafe(snakeBoard, "DL")) + " ")
+        RawBoardFile.write(str(isDirectionSafe(snakeBoard, "DR")) + " ")
+        # RawBoardFile.write(str(getLengthOfSnake(snakeBoard)) + " ")
         RawBoardFile.write(str(normalizeSnakeHeadAndFoodLocation(headLoc,pointLoc)) + "\t\t") ##Writes normalized angle between head and food
         print(interpetEvent(event))
         RawBoardFile.write(interpetEvent(event) + "\n") ##Writes the chosen move
@@ -74,9 +78,12 @@ def interpetEvent(event):
 
 
 def isDirectionSafe(snakeBoard, direction):
+
     stringToBeExamined = str(snakeBoard.safeDirections('P1'))
     if direction in stringToBeExamined:
+        print(f"Testing: {direction} returning 1")
         return 1
+    print(f"Testing: {direction} returning 0")
     return 0
 
 

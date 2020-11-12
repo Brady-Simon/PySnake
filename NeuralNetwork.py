@@ -4,9 +4,11 @@ from torch import nn
 from random import randint
 from Models.SnakeBoard import SnakeBoard
 from Models.Snake import Snake
-from Views.SnakeWindow import SnakeWindow
+# from Views.SnakeWindow import SnakeWindow
 from Models.Direction import Direction
 from Controllers.SnakeControllable import SnakeControllable
+from Views.SnakeWindow import SnakeWindow
+
 
 class NeuralNetwork(SnakeControllable):
 
@@ -23,7 +25,7 @@ class NeuralNetwork(SnakeControllable):
         # self.epoch = 1000
         self.learning_rate = 0.01
         self.numberOfInputs = self.test_input_data.shape[1]  # number of features in a dataset/inputlayer
-        self.numberOfNeuronsInHiddenLayers = 6  # Does it matter?
+        self.numberOfNeuronsInHiddenLayers = 9  # Does it matter?
         self.numberOfOutput = 4  # number of neurons in output layer
 
         # Learning weights and algorithm
@@ -68,26 +70,6 @@ class NeuralNetwork(SnakeControllable):
 
         return np.argmax(convertedToNumpy)
 
-    def writeToFile(self, snakeBoard, event):
-        randomInt = randint(0, 6)
-        headLoc = snakeBoard.snakeDict.get('P1').head()
-        pointLoc = snakeBoard.point
-        # if(randomInt == 1):
-        print(f"Size: {self.getLengthOfSnake(snakeBoard)}")
-        if (True):
-            self.normalizeSnakeHeadAndFoodLocation(headLoc, pointLoc)
-            RawBoardFile = open("RawBoardFile.txt", "a")
-            RawBoardFile.write(str(self.isDirectionSafe(snakeBoard, "up")) + " ")
-            RawBoardFile.write(str(self.isDirectionSafe(snakeBoard, "down")) + " ")
-            RawBoardFile.write(str(self.isDirectionSafe(snakeBoard, "left")) + " ")
-            RawBoardFile.write(str(self.isDirectionSafe(snakeBoard, "right")) + " ")
-            RawBoardFile.write(str(self.getLengthOfSnake(snakeBoard)) + " ")
-            RawBoardFile.write(str(self.normalizeSnakeHeadAndFoodLocation(headLoc,
-                                                                     pointLoc)) + "\t\t")  ##Writes normalized angle between head and food
-            print(self.interpetEvent(event))
-            RawBoardFile.write(self.interpetEvent(event) + "\n")  ##Writes the chosen move
-            RawBoardFile.close()
-            print(self.normalizeSnakeHeadAndFoodLocation(snakeBoard.snakeDict.get('P1').head(), snakeBoard.point))
 
     def getInputDataFromFile(self):
         file = open("RawBoardFile.txt", "r")
@@ -176,7 +158,13 @@ class NeuralNetwork(SnakeControllable):
         data.append(self.isDirectionSafe(snakeBoard, "down"))
         data.append(self.isDirectionSafe(snakeBoard, "left"))
         data.append(self.isDirectionSafe(snakeBoard, "right"))
-        data.append(float(self.getLengthOfSnake(snakeBoard)))
+
+        data.append(self.isDirectionSafe(snakeBoard, "UL"))
+        data.append(self.isDirectionSafe(snakeBoard, "UR"))
+        data.append(self.isDirectionSafe(snakeBoard, "DL"))
+        data.append(self.isDirectionSafe(snakeBoard, "DR"))
+
+        # data.append(float(self.getLengthOfSnake(snakeBoard)))
         data.append(float(self.normalizeSnakeHeadAndFoodLocation(headLoc, pointLoc)))
         data = torch.FloatTensor(data)
         output = self.testModel(data)
@@ -216,7 +204,7 @@ def main():
     bot = NeuralNetwork()
     bot.trainModel(150000)
 
-    # testData = torch.tensor([[0, 1, 0, 1, 0.5, 0.375]], dtype=torch.float)
+    # testData = torch.tensor([[0, 1, 1, 1, 1, 1, 1, 1, 0.2, 0.375	]], dtype=torch.float)
     # print(bot.testModel(testData))
 
     board = generateBoard(bot)
