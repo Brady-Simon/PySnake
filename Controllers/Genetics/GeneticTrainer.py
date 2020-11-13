@@ -87,6 +87,7 @@ class GeneticTrainer:
             states = next_population
             print('\r' + progress_bar.getProgressBar(generation + 1, generations) + f' Fitness: {best_fitness}', end='')
 
+        print()
         return best_dict, fitness_history
 
     @staticmethod
