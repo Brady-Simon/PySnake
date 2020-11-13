@@ -40,9 +40,9 @@ class GenericSnakeAI(nn.Module, SnakeControllable):
         hiddenSize1 = 24
         hiddenSize2 = 12
         outputSize = 4
-        self.inputLayer = nn.Linear(inputSize, hiddenSize1).to(self.device)
-        self.hiddenLayer = nn.Linear(hiddenSize1, hiddenSize2).to(self.device)
-        self.outputLayer = nn.Linear(hiddenSize2, outputSize).to(self.device)
+        self.inputLayer = nn.Linear(inputSize, hiddenSize1)
+        self.hiddenLayer = nn.Linear(hiddenSize1, hiddenSize2)
+        self.outputLayer = nn.Linear(hiddenSize2, outputSize)
 
     def forward(self, x):
         """Forwards tensor `x` through the neural network.
