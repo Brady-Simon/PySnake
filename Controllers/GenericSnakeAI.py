@@ -132,7 +132,8 @@ def main():
     #                                                    workers=8, mutation_rate=0.05)
 
     state_dict, fitness_history = GeneticTrainer.startSimulation(get_model, initial_state_dict=initial_state_dict,
-                                                                 population=50, generations=50, mutation_rate=0.005)
+                                                                 population=50, generations=50, mutation_rate=0.005,
+                                                                 cutoff_fitness=None)
     model.load_state_dict(state_dict)
 
     figure = plt.gcf()

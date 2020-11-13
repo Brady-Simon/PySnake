@@ -61,7 +61,8 @@ class GeneticTrainer:
 
     @staticmethod
     def startSimulation(get_model, initial_state_dict, population: int = 512,
-                        generations: int = 128, mutation_rate: float = 0.05) -> (dict, List[float]):
+                        generations: int = 128, mutation_rate: float = 0.05,
+                        cutoff_fitness: float = None) -> (dict, List[float]):
         """Starts the simulations using a large population-child setup.
 
         Args:
@@ -70,6 +71,7 @@ class GeneticTrainer:
             population (int): The population size to use for each generation.
             generations (int): The total number of times to repeat the child process
             mutation_rate (float): How often to mutate individual numbers in state.
+            cutoff_fitness (float): Stops training once the desired fitness is reached. Optional.
 
         Returns:
             (dict, List[float]): The best state dictionary and the fitness history over training.
@@ -78,12 +80,17 @@ class GeneticTrainer:
         states = [copy.deepcopy(initial_state_dict) for _ in range(population)]
         for state in states:
             GeneticTrainer.randomize(state, mutation_rate)
+        # TODO: Might consider only updating this if the new state_dict has a better fitness.
+        # TODO: Also consider a timeout as well as cutoff fitness.
         best_dict = {}
         fitness_history = []
         for generation in range(generations):
             best_dict, best_fitness, next_population = GeneticTrainer.simulate(get_model(), states,
                                                                                population, mutation_rate)
             fitness_history.append(best_fitness)
+            if best_fitness >= cutoff_fitness:
+                print(f"\nCut-off fitness reached ({best_fitness} of {cutoff_fitness})")
+                return best_dict, fitness_history
             states = next_population
             print('\r' + progress_bar.getProgressBar(generation + 1, generations) + f' Fitness: {best_fitness}', end='')
 
