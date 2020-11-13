@@ -132,7 +132,7 @@ def main():
     #                                                    workers=8, mutation_rate=0.05)
 
     state_dict, fitness_history = GeneticTrainer.startSimulation(get_model, initial_state_dict=initial_state_dict,
-                                                                 population=256, generations=128, mutation_rate=0.005)
+                                                                 population=50, generations=50, mutation_rate=0.005)
     model.load_state_dict(state_dict)
 
     figure = plt.gcf()
@@ -148,10 +148,11 @@ def main():
 
     def get_board():
         snakeBoard = SnakeBoard()
+        segments = GeneticTrainer.generateSnakeSegments(snakeBoard.board,
+                                                        snakeBoard.board.columns(),
+                                                        snakeBoard.board.rows())
         snake = Snake(name='AI', mark='X',
-                      segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
-                                (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
-                                (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 1)],
+                      segments=segments,
                       controller=model, maxHealth=50)
         snakeBoard.addSnake(snake)
         snakeBoard.generatePoint()

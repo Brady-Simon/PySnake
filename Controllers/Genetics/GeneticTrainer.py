@@ -8,6 +8,7 @@ from Views.ProgressBar import ProgressBar
 from Models.SnakeBoard import SnakeBoard
 from Models.Snake import Snake
 from Models.Color import Color
+from Models.Direction import Direction
 
 
 class GeneticTrainer:
@@ -201,19 +202,60 @@ class GeneticTrainer:
     def generateDefaultBoard(controller) -> SnakeBoard:
         """Generates an example `SnakeBoard` to use for training."""
         snakeBoard = SnakeBoard()
-        # head = (random.randint(0, snakeBoard.board.columns()-1), random.randint(0, snakeBoard.board.rows() - 1))
+        segments = GeneticTrainer.generateSnakeSegments(snakeBoard.board,
+                                                        snakeBoard.board.columns(),
+                                                        snakeBoard.board.rows())
 
         snake = Snake(name='AI', mark=Color.colorize('X', Color.cyan),
-                      segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
-                                (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
-                                (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 1)],
-                      controller=controller, maxHealth=50)
+                      segments=segments, controller=controller, maxHealth=50)
         snakeBoard.addSnake(snake)
         snakeBoard.generatePoint()
         return snakeBoard
 
+    @staticmethod
+    def randomAdjacentPosition(pos: (int, int)) -> (int, int):
+        direction = Direction.moves()[random.randint(0, len(Direction.moves()) - 1)]
+        return pos[0] + direction.value[0], pos[1] + direction.value[1]
+
+    @staticmethod
+    def generateSnakeSegments(board, columns: int, rows: int):
+        segments = []
+        head = (random.randint(0, columns - 1), random.randint(0, rows - 1))
+        segments.append(head)
+        middle = GeneticTrainer.randomAdjacentPosition(head)
+        while not board.inBounds(middle):
+            middle = GeneticTrainer.randomAdjacentPosition(head)
+        segments.append(middle)
+        tail = middle
+        while tail in segments or not board.inBounds(tail):
+            tail = GeneticTrainer.randomAdjacentPosition(middle)
+        segments.append(tail)
+        return segments
+
 
 def main():
+
+    pos = (5, 5)
+    posHistory = [pos]
+    for i in range(10):
+        pos = GeneticTrainer.randomAdjacentPosition(pos, 10, 10)
+        posHistory.append(pos)
+
+    from Models.Board import Board
+    board = Board()
+    for pos in posHistory:
+        board.place('X', pos)
+    print()
+    posSet = set(posHistory)
+    print(f"Same length? {len(posHistory) == len(posSet)}")
+    if not len(posHistory) == len(posSet):
+        print("History:")
+        print(posHistory)
+        print("\nSet:")
+        print(posSet)
+
+    return
+
     # Ensure that crossover works properly.
     # There should be a mix of 1's, 2's, and potentially a random number or more.
     dict1 = {'weights': torch.Tensor([[1, 1, 1], [1, 1, 1], [1, 1, 1]])}
@@ -225,6 +267,9 @@ def main():
     print(dict1.get('weights'))
     GeneticTrainer.randomize(dict1, mutation_rate=0.5)
     print(dict1.get('weights'))
+
+
+
 
 
 if __name__ == '__main__':
