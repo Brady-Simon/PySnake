@@ -84,7 +84,7 @@ class GeneticTrainer:
                                                                                population, mutation_rate)
             fitness_history.append(best_fitness)
             states = next_population
-            progress_bar.printProgress(generation + 1, generations, length=16)
+            print('\r' + progress_bar.getProgressBar(generation + 1, generations) + f' Fitness: {best_fitness}', end='')
 
         return best_dict, fitness_history
 
@@ -201,6 +201,8 @@ class GeneticTrainer:
     def generateDefaultBoard(controller) -> SnakeBoard:
         """Generates an example `SnakeBoard` to use for training."""
         snakeBoard = SnakeBoard()
+        # head = (random.randint(0, snakeBoard.board.columns()-1), random.randint(0, snakeBoard.board.rows() - 1))
+
         snake = Snake(name='AI', mark=Color.colorize('X', Color.cyan),
                       segments=[(snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 3),
                                 (snakeBoard.board.columns() // 2, snakeBoard.board.rows() - 2),
