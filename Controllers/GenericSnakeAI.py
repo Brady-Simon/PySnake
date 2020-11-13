@@ -162,6 +162,18 @@ def main():
     window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7, reset_func=get_board)
     window.mainloop()
 
+    # Ask to save the trained model.
+    while True:
+        shouldSaveModel = input("Would you like to save the model? (y/n): ")
+        if shouldSaveModel.lower() == 'y':
+            torch.save(state_dict, 'genetic_state_dict')
+            break
+        elif shouldSaveModel.lower() == 'n':
+            print("Exiting...")
+            break
+        else:
+            print("Input not recognized.")
+
 
 if __name__ == '__main__':
     main()
