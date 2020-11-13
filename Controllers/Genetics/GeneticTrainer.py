@@ -82,20 +82,26 @@ class GeneticTrainer:
             GeneticTrainer.randomize(state, mutation_rate)
         # TODO: Might consider only updating this if the new state_dict has a better fitness.
         # TODO: Also consider a timeout as well as cutoff fitness.
-        best_dict = {}
+        max_dict = {}
+        max_fitness = 0.0
         fitness_history = []
         for generation in range(generations):
             best_dict, best_fitness, next_population = GeneticTrainer.simulate(get_model(), states,
                                                                                population, mutation_rate)
             fitness_history.append(best_fitness)
-            if best_fitness >= cutoff_fitness:
+            if cutoff_fitness is not None and best_fitness >= cutoff_fitness:
+                # We're done here, return
                 print(f"\nCut-off fitness reached ({best_fitness} of {cutoff_fitness})")
                 return best_dict, fitness_history
+            elif best_fitness > max_fitness:
+                # New record!
+                max_dict = best_dict
+                max_fitness = best_fitness
             states = next_population
             print('\r' + progress_bar.getProgressBar(generation + 1, generations) + f' Fitness: {best_fitness}', end='')
 
         print()
-        return best_dict, fitness_history
+        return max_dict, fitness_history
 
     @staticmethod
     def simulate(model, state_dicts, population, mutation_rate) -> (dict, float, List[dict]):
@@ -132,6 +138,7 @@ class GeneticTrainer:
 
         # Ensure that there are enough parents by adding random parents if necessary.
         while len(next_population) < population//2:
+            # TODO: Pass in best_state_dict and crossover with random parent
             next_population.append(copy.deepcopy(state_dicts[random.randint(0, len(state_dicts) - 1)]))
 
         # Append any children
