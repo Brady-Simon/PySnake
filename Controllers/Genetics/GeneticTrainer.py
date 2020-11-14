@@ -1,6 +1,7 @@
 import copy
 import torch
 import random
+import time
 from typing import List
 import concurrent.futures
 from Controllers.Genetics.SnakeWorker import SnakeWorker
@@ -62,7 +63,7 @@ class GeneticTrainer:
     @staticmethod
     def startSimulation(get_model, initial_state_dict, population: int = 512,
                         generations: int = 128, mutation_rate: float = 0.05,
-                        cutoff_fitness: float = None) -> (dict, List[float]):
+                        cutoff_fitness: float = None, timeout: float = None) -> (dict, List[float]):
         """Starts the simulations using a large population-child setup.
 
         Args:
@@ -72,23 +73,31 @@ class GeneticTrainer:
             generations (int): The total number of times to repeat the child process
             mutation_rate (float): How often to mutate individual numbers in state.
             cutoff_fitness (float): Stops training once the desired fitness is reached. Optional.
+            timeout (float): Stops training after total time exceeds this value. Optional.
 
         Returns:
             (dict, List[float]): The best state dictionary and the fitness history over training.
         """
         progress_bar = ProgressBar()
+        print('\r' + progress_bar.getProgressBar(0, generations), end='')
+        # Mutate the initial state dictionary to get a diverse population.
         states = [copy.deepcopy(initial_state_dict) for _ in range(population)]
         for state in states:
             GeneticTrainer.randomize(state, mutation_rate)
-        # TODO: Might consider only updating this if the new state_dict has a better fitness.
-        # TODO: Also consider a timeout as well as cutoff fitness.
+
+        # Some important properties to keep track of.
         max_dict = {}
         max_fitness = 0.0
         fitness_history = []
+        start_time = time.time()
+
+        # Keep iterating through generations of snakes
         for generation in range(generations):
             best_dict, best_fitness, next_population = GeneticTrainer.simulate(get_model(), states,
                                                                                population, mutation_rate)
             fitness_history.append(best_fitness)
+            total_time = time.time() - start_time
+
             if cutoff_fitness is not None and best_fitness >= cutoff_fitness:
                 # We're done here, return
                 print(f"\nCut-off fitness reached ({best_fitness} of {cutoff_fitness})")
@@ -97,6 +106,13 @@ class GeneticTrainer:
                 # New record!
                 max_dict = best_dict
                 max_fitness = best_fitness
+
+            # Return if the training time exceeds timeout
+            if timeout is not None and total_time >= timeout:
+                print(f"\n{timeout} second timeout reached.")
+                return max_dict, fitness_history
+
+            # Update the current population of snakes and print current progress
             states = next_population
             print('\r' + progress_bar.getProgressBar(generation + 1, generations) + f' Fitness: {best_fitness}', end='')
 

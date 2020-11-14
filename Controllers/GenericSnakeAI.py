@@ -117,69 +117,87 @@ class GenericSnakeAI(nn.Module, SnakeControllable):
 
 
 def main():
-    start_time = time.time()
-    model = GenericSnakeAI()
-
-    vision_model: VisionNeuralNetwork = torch.load('genetic_state_dict')
-    #initial_state_dict = model.state_dict()
-    #initial_state_dict = vision_model.state_dict()
-    #initial_state_dict = model.load_state_dict(vision_model)
-
     from Controllers.Genetics.GeneticTrainer import GeneticTrainer
+    from Views.SnakeWindow import SnakeWindow
 
     def get_model():
         return GenericSnakeAI()
 
-    # state_dict, fitness_history = GeneticTrainer.train(model, population=256, generations=32,
-    #                                                    workers=8, mutation_rate=0.05)
-
-    state_dict, fitness_history = GeneticTrainer.startSimulation(get_model, initial_state_dict=vision_model,
-                                                                 population=64, generations=1, mutation_rate=0.005,
-                                                                 cutoff_fitness=10000)
-    model.load_state_dict(state_dict)
-
-    end_time = time.time()
-
-    print(f"Time to complete training: {end_time - start_time}")
-
-    figure = plt.gcf()
-    figure.canvas.set_window_title("Genetic Training Results")
-    plt.title(f"Fitness History")
-    plt.grid(axis='y')
-    plt.ylabel("Max Fitness")
-    plt.xlabel("Generation")
-    plt.plot(fitness_history)
-    plt.show()
-
-    from Views.SnakeWindow import SnakeWindow
-
-    def get_board():
+    def get_board(controller):
         snakeBoard = SnakeBoard()
         segments = GeneticTrainer.generateSnakeSegments(snakeBoard.board,
                                                         snakeBoard.board.columns(),
                                                         snakeBoard.board.rows())
         snake = Snake(name='AI', mark='X',
                       segments=segments,
-                      controller=model, maxHealth=50)
+                      controller=controller, maxHealth=50)
         snakeBoard.addSnake(snake)
         snakeBoard.generatePoint()
         return snakeBoard
 
-    board = get_board()
-    window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7, reset_func=get_board)
-    window.mainloop()
-
-    # Ask to save the trained model.
-    while True:
-        shouldSaveModel = input("Would you like to save the model? (y/n): ")
-        if shouldSaveModel.lower() == 'y':
-            torch.save(state_dict, 'genetic_state_dict')
-            break
-        elif shouldSaveModel.lower() == 'n':
-            print("Exiting...")
-            break
+    model = GenericSnakeAI()
+    looping = True
+    while looping:
+        answer = input("Use a new model or load existing one? <1|2>: ")
+        if answer.lower() == '1':
+            # Model is already created and randomized; just exit the loop
+            looping = False
+        elif answer.lower() == '2':
+            # Load the existing state dictionary from file
+            model.load_state_dict(torch.load('genetic_state_dict'))
+            looping = False
         else:
             print("Input not recognized.")
+
+    looping = True
+    while looping:
+        answer = input("Would you like to train the model or play? <1|2>: ")
+        if answer == '1':
+            # Train new model
+            start_time = time.time()
+            state_dict, fitness_history = GeneticTrainer.startSimulation(get_model,
+                                                                         initial_state_dict=model.state_dict(),
+                                                                         population=64, generations=10,
+                                                                         mutation_rate=0.005,
+                                                                         cutoff_fitness=10000,
+                                                                         timeout=None)
+            end_time = time.time()
+            model.load_state_dict(state_dict)
+            print("Training time: {0:.1f} seconds".format(end_time - start_time))
+
+            # Show the fitness history
+            figure = plt.gcf()
+            figure.canvas.set_window_title("Genetic Training Results")
+            plt.title(f"Fitness History")
+            plt.grid(axis='y')
+            plt.ylabel("Max Fitness")
+            plt.xlabel("Generation")
+            plt.plot(fitness_history)
+            plt.show()
+
+            # Play the game
+            board = get_board(model)
+            window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7, reset_func=lambda: get_board(model))
+            window.mainloop()
+
+            # Ask to save the trained model.
+            while True:
+                shouldSaveModel = input("Would you like to save the model? (y/n): ")
+                if shouldSaveModel.lower() == 'y':
+                    torch.save(state_dict, 'genetic_state_dict')
+                    break
+                elif shouldSaveModel.lower() == 'n':
+                    print("Exiting...")
+                    break
+                else:
+                    print("Input not recognized.")
+            looping = False
+        elif answer == '2':
+            # Play the game and don't train
+            board = get_board(model)
+            window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7, reset_func=lambda: get_board(model))
+            window.mainloop()
+            looping = False
 
 
 if __name__ == '__main__':
