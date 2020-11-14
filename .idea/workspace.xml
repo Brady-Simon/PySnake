@@ -23,9 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added some copy.deepcopy() to GeneticTrainer.py that fixed some training issues.">
+      <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="population_changes" />
+        <entry key="$PROJECT_DIR$" value="GeraldSnakeV2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -390,26 +391,38 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="175" key="GridCell.Tab.0.bottom" timestamp="1605210828842">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="267" key="GridCell.Tab.0.bottom" timestamp="1605369920321">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605369920321" />
     <state width="1419" height="175" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605210828842" />
-    <state width="1419" height="175" key="GridCell.Tab.0.center" timestamp="1605210828842">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="267" key="GridCell.Tab.0.center" timestamp="1605369920320">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="267" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605369920320" />
     <state width="1419" height="175" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605210828842" />
-    <state width="1419" height="175" key="GridCell.Tab.0.left" timestamp="1605210828841">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="267" key="GridCell.Tab.0.left" timestamp="1605369920320">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="267" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605369920320" />
     <state width="1419" height="175" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605210828841" />
-    <state width="1419" height="175" key="GridCell.Tab.0.right" timestamp="1605210828842">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state width="1899" height="267" key="GridCell.Tab.0.right" timestamp="1605369920320">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="267" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605369920320" />
     <state width="1419" height="175" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605210828842" />
+    <state x="163" y="76" width="1649" height="877" key="MergeDialog" timestamp="1605304404497">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="163" y="76" width="1649" height="877" key="MergeDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605304404497" />
     <state x="358" y="196" key="MultipleFileMergeDialog" timestamp="1605121277445">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="358" y="196" key="MultipleFileMergeDialog/0.23.1440.809@0.23.1440.809" timestamp="1605121277445" />
+    <state x="748" y="227" key="RollbackChangesDialog" timestamp="1605303570099">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="748" y="227" key="RollbackChangesDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605303570099" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1605142948892">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -418,9 +431,10 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605208081671" />
-    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604436282608">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="823" y="394" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605325284160">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="823" y="394" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1605325284160" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1604436282608" />
     <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1605200512913">
       <screen x="0" y="23" width="1440" height="809" />
