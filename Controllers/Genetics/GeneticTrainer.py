@@ -84,6 +84,8 @@ class GeneticTrainer:
         states = [copy.deepcopy(initial_state_dict) for _ in range(population)]
         for state in states:
             GeneticTrainer.randomize(state, mutation_rate)
+        # Ensure the initial snake is kept intact.
+        states[0] = copy.deepcopy(initial_state_dict)
 
         # Some important properties to keep track of.
         max_dict = {}
@@ -97,7 +99,6 @@ class GeneticTrainer:
                                                                                population, mutation_rate)
             fitness_history.append(best_fitness)
             total_time = time.time() - start_time
-
             if cutoff_fitness is not None and best_fitness >= cutoff_fitness:
                 # We're done here, return
                 print(f"\nCut-off fitness reached ({best_fitness} of {cutoff_fitness})")
@@ -126,9 +127,8 @@ class GeneticTrainer:
         Returns:
             (dict, float, List[dict]): The best snake, its fitness, and the next state dictionary populations to use.
         """
+        # Copy over the generation
         new_state_dicts = [copy.deepcopy(state) for state in state_dicts]
-        for state in new_state_dicts:
-            GeneticTrainer.randomize(state, mutation_rate)
         # Run the simulations
         best_fitness: float = 0.0
         avg_fitness = 0.0
@@ -152,10 +152,11 @@ class GeneticTrainer:
             if fitness_history[i] > avg_fitness:
                 next_population.append(copy.deepcopy(state_dicts[i]))
 
-        # Ensure that there are enough parents by adding random parents if necessary.
+        # Ensure that there are enough parents by adding randomized parents if necessary.
         while len(next_population) < population//2:
-            # TODO: Pass in best_state_dict and crossover with random parent
-            next_population.append(copy.deepcopy(state_dicts[random.randint(0, len(state_dicts) - 1)]))
+            mutated_parent = copy.deepcopy(state_dicts[random.randint(0, len(state_dicts) - 1)])
+            GeneticTrainer.randomize(mutated_parent, mutation_rate=mutation_rate)
+            next_population.append(mutated_parent)
 
         # Append any children
         parent_count = len(next_population)
@@ -230,7 +231,7 @@ class GeneticTrainer:
         return 100 * score + turns
 
     @staticmethod
-    def generateDefaultBoard(controller) -> SnakeBoard:
+    def generateDefaultBoard(controller, adaptiveHealth: bool = False) -> SnakeBoard:
         """Generates an example `SnakeBoard` to use for training."""
         snakeBoard = SnakeBoard()
         segments = GeneticTrainer.generateSnakeSegments(snakeBoard.board,
@@ -238,7 +239,9 @@ class GeneticTrainer:
                                                         snakeBoard.board.rows())
 
         snake = Snake(name='AI', mark=Color.colorize('X', Color.cyan),
-                      segments=segments, controller=controller, maxHealth=50)
+                      segments=segments, controller=controller,
+                      maxHealth=20 if adaptiveHealth else 50,
+                      healthIncrease=2 if adaptiveHealth else 0)
         snakeBoard.addSnake(snake)
         snakeBoard.generatePoint()
         return snakeBoard
@@ -269,7 +272,7 @@ def main():
     pos = (5, 5)
     posHistory = [pos]
     for i in range(10):
-        pos = GeneticTrainer.randomAdjacentPosition(pos, 10, 10)
+        pos = GeneticTrainer.randomAdjacentPosition(pos)
         posHistory.append(pos)
 
     from Models.Board import Board
@@ -285,8 +288,6 @@ def main():
         print("\nSet:")
         print(posSet)
 
-    return
-
     # Ensure that crossover works properly.
     # There should be a mix of 1's, 2's, and potentially a random number or more.
     dict1 = {'weights': torch.Tensor([[1, 1, 1], [1, 1, 1], [1, 1, 1]])}
@@ -298,9 +299,6 @@ def main():
     print(dict1.get('weights'))
     GeneticTrainer.randomize(dict1, mutation_rate=0.5)
     print(dict1.get('weights'))
-
-
-
 
 
 if __name__ == '__main__':

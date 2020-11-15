@@ -6,7 +6,8 @@ import Controllers.SnakeControllable as Controller
 class Snake:
 
     # Not type hinting controller to prevent circular imports
-    def __init__(self, name: str, mark, segments: List[Tuple[int, int]] = None, controller=None, maxHealth: int = None):
+    def __init__(self, name: str, mark, segments: List[Tuple[int, int]] = None,
+                 controller=None, maxHealth: int = None, healthIncrease: int = 0):
         """Creates a new snake.
 
         Args:
@@ -18,6 +19,7 @@ class Snake:
                 Defaults to `SnakeControllable` if left blank, which means no movement.
             maxHealth (int): The number of times the snake can move before starving.
                 Getting a point resets this value. Snake never gets hungry if left `None`.
+            healthIncrease (int): The amount to increase `maxHealth` when the snake grows.
         """
         self.name = name
         """The unique name of this snake."""
@@ -32,6 +34,8 @@ class Snake:
         if maxHealth is not None:
             self.health: int = maxHealth
             """The snake's current health. The snake is starving once it reaches 0."""
+        self.healthIncrease = healthIncrease
+        """The amount of health to add to `maxHealth` each time the snake grows."""
 
         if segments is None:
             self.segments = [(2, 0), (1, 0), (0, 0)]
@@ -61,6 +65,7 @@ class Snake:
                 self.segments.append(last)
             # Reset health if applicable
             if self.maxHealth is not None:
+                self.maxHealth += self.healthIncrease
                 self.health = self.maxHealth
 
     def move(self, direction: Direction) -> (int, int):

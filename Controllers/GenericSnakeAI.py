@@ -120,17 +120,21 @@ def main():
     from Controllers.Genetics.GeneticTrainer import GeneticTrainer
     from Views.SnakeWindow import SnakeWindow
 
+    file_name = 'genetic_state_dict'
+
     def get_model():
         return GenericSnakeAI()
 
-    def get_board(controller):
+    def get_board(controller, adaptiveHealth: bool = False):
         snakeBoard = SnakeBoard()
         segments = GeneticTrainer.generateSnakeSegments(snakeBoard.board,
                                                         snakeBoard.board.columns(),
                                                         snakeBoard.board.rows())
         snake = Snake(name='AI', mark='X',
                       segments=segments,
-                      controller=controller, maxHealth=50)
+                      controller=controller,
+                      maxHealth=20 if adaptiveHealth else 50,
+                      healthIncrease=2 if adaptiveHealth else 0)
         snakeBoard.addSnake(snake)
         snakeBoard.generatePoint()
         return snakeBoard
@@ -144,7 +148,7 @@ def main():
             looping = False
         elif answer.lower() == '2':
             # Load the existing state dictionary from file
-            model.load_state_dict(torch.load('genetic_state_dict'))
+            model.load_state_dict(torch.load(file_name))
             looping = False
         else:
             print("Input not recognized.")
@@ -157,9 +161,9 @@ def main():
             start_time = time.time()
             state_dict, fitness_history = GeneticTrainer.startSimulation(get_model,
                                                                          initial_state_dict=model.state_dict(),
-                                                                         population=64, generations=10,
-                                                                         mutation_rate=0.005,
-                                                                         cutoff_fitness=10000,
+                                                                         population=1024, generations=512,
+                                                                         mutation_rate=0.0005,
+                                                                         cutoff_fitness=8000,
                                                                          timeout=None)
             end_time = time.time()
             model.load_state_dict(state_dict)
@@ -184,7 +188,7 @@ def main():
             while True:
                 shouldSaveModel = input("Would you like to save the model? (y/n): ")
                 if shouldSaveModel.lower() == 'y':
-                    torch.save(state_dict, 'genetic_state_dict')
+                    torch.save(state_dict, file_name)
                     break
                 elif shouldSaveModel.lower() == 'n':
                     print("Exiting...")
