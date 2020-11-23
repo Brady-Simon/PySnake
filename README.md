@@ -1,6 +1,9 @@
 # PySnake
 
 An AI-enabled Snake that allows you to train a PyTorch neural network and see the trained network play the game in a Tkinter application. 
+This project was made by Brady Simon and Gerald Arenas as a way to learn more about neural networks and how representing the same 
+information differently can cause different outcomes.
+
 There are three different neural network files:
   1. NeuralNetwork.py
   2. VisualNeuralNetwork.py
@@ -56,3 +59,7 @@ This cycle continues until one of the exit conditions are met:
   - A desired cutoff fitness has been reached.
   - Training time has exceeded a given timeout.
   
+This training process takes considerably longer than the previous networks, but yields greater results due to overcoming 
+human limitations in training data. Further improvements could build upon the inputs to the network (either by adding more
+or reworking the vision system), but a general solution was desired as opposed to passing in the entire _SnakeBoard_ instance
+and restricting the model to a certain board layout.
