@@ -12,7 +12,7 @@ matplotlib.use("TkAgg")  # Using TkAgg to prevent issues with Tkinter SnakeWindo
 from matplotlib import pyplot as plt
 
 
-class GenericSnakeAI(nn.Module, SnakeControllable):
+class GeneticSnakeAI(nn.Module, SnakeControllable):
     """A neural network that decides snake movements based on directions.
 
     Input lists should match the following structure:
@@ -100,7 +100,7 @@ class GenericSnakeAI(nn.Module, SnakeControllable):
 
     @staticmethod
     def visionTo(snakeBoard, head, delta) -> list:
-        result = [0.0, 0.0, 0.0]  # Food, body, empty/wall
+        result = [0.0, 0.0, 0.0]  # Food, body, 1/wall_distance
         pos = head
         distance = 0
         while snakeBoard.board.inBounds(pos):
@@ -110,8 +110,6 @@ class GenericSnakeAI(nn.Module, SnakeControllable):
                 result[0] = 1.0
             elif not snakeBoard.board.isEmpty:
                 result[1] = 1.0
-            # elif snakeBoard.board.isEmpty(pos):
-            #     result[2] = 1.0
         result[2] = 1 / distance
         return result
 
@@ -123,7 +121,7 @@ def main():
     file_name = 'genetic_state_dict'
 
     def get_model():
-        return GenericSnakeAI()
+        return GeneticSnakeAI()
 
     def get_board(controller, adaptiveHealth: bool = False):
         snakeBoard = SnakeBoard()
@@ -139,7 +137,7 @@ def main():
         snakeBoard.generatePoint()
         return snakeBoard
 
-    model = GenericSnakeAI()
+    model = GeneticSnakeAI()
     looping = True
     while looping:
         answer = input("Use a new model or load existing one? <1|2>: ")
@@ -199,7 +197,13 @@ def main():
         elif answer == '2':
             # Play the game and don't train
             board = get_board(model)
-            window = SnakeWindow(snakeBoard=board, humanControllable=False, fps=7, reset_func=lambda: get_board(model))
+            window = SnakeWindow(snakeBoard=board,
+                                 humanControllable=False,
+                                 fps=7, healthBarWidth=10,
+                                 reset_func=lambda: get_board(model),
+                                 using_gradients=True,
+                                 initial_color=(0, 190, 255),
+                                 final_color=(255, 0, 255))
             window.mainloop()
             looping = False
 
