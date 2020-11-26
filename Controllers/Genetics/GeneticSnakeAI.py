@@ -199,7 +199,7 @@ def main():
             board = get_board(model)
             window = SnakeWindow(snakeBoard=board,
                                  humanControllable=False,
-                                 fps=7, healthBarWidth=10,
+                                 fps=30, healthBarWidth=10,
                                  reset_func=lambda: get_board(model),
                                  using_gradients=True,
                                  initial_color=(0, 190, 255),

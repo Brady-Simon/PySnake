@@ -22,12 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Moved and renamed some files.">
-      <change afterPath="$PROJECT_DIR$/Screenshots/BasicSnake.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Screenshots/ColorfulSnake.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PySnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PySnake.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added screenshots to README.md">
+      <change afterPath="$PROJECT_DIR$/Screenshots/SnakeDemo.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Genetics/GeneticSnakeAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/GeneticSnakeAI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +65,7 @@
       <recent name="$PROJECT_DIR$/Controllers/Genetics" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.SnakeWindow">
+  <component name="RunManager" selected="Python.GeneticSnakeAI">
     <configuration name="GeneticSnakeAI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PySnake" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -196,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.GeneticSnakeAI" />
         <item itemvalue="Python.SnakeWindow" />
         <item itemvalue="Python.VisionNeuralNetwork" />
         <item itemvalue="Python.SnakeAlgorithm" />
         <item itemvalue="Python.NeuralNetwork" />
-        <item itemvalue="Python.GeneticSnakeAI" />
       </list>
     </recent_temporary>
   </component>
@@ -290,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606157570141</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added screenshots to README.md">
+      <created>1606402247501</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1606402247501</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -317,9 +322,14 @@
     <MESSAGE value="Added more functionality into GeneticTrainer.py to replace SnakeWorker.py." />
     <MESSAGE value="Changed the way SnakeWindow.py writes to files for NeuralNetwork.py." />
     <MESSAGE value="Moved and renamed some files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved and renamed some files." />
+    <MESSAGE value="Added screenshots to README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added screenshots to README.md" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="420" y="232" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606404026480">
+      <screen x="0" y="25" width="1440" height="802" />
+    </state>
+    <state x="420" y="232" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1440.802@0.25.1440.802" timestamp="1606404026480" />
     <state x="210" y="25" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606157299985">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
@@ -336,26 +346,30 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="496" y="132" key="Github.UntrackedFilesDialog/0.23.1440.809@0.23.1440.809" timestamp="1604265683007" />
-    <state width="1419" height="171" key="GridCell.Tab.0.bottom" timestamp="1606253059536">
+    <state width="1419" height="171" key="GridCell.Tab.0.bottom" timestamp="1606403130145">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.809@0.23.1440.809" timestamp="1605120774992" />
-    <state width="1419" height="171" key="GridCell.Tab.0.bottom/0.25.1440.802@0.25.1440.802" timestamp="1606253059536" />
-    <state width="1419" height="171" key="GridCell.Tab.0.center" timestamp="1606253059536">
+    <state width="1419" height="171" key="GridCell.Tab.0.bottom/0.25.1440.802@0.25.1440.802" timestamp="1606403130145" />
+    <state width="1419" height="171" key="GridCell.Tab.0.bottom/0.25.1440.803@0.25.1440.803" timestamp="1606402523203" />
+    <state width="1419" height="171" key="GridCell.Tab.0.center" timestamp="1606403130144">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.809@0.23.1440.809" timestamp="1605120774991" />
-    <state width="1419" height="171" key="GridCell.Tab.0.center/0.25.1440.802@0.25.1440.802" timestamp="1606253059536" />
-    <state width="1419" height="171" key="GridCell.Tab.0.left" timestamp="1606253059536">
+    <state width="1419" height="171" key="GridCell.Tab.0.center/0.25.1440.802@0.25.1440.802" timestamp="1606403130144" />
+    <state width="1419" height="171" key="GridCell.Tab.0.center/0.25.1440.803@0.25.1440.803" timestamp="1606402523202" />
+    <state width="1419" height="171" key="GridCell.Tab.0.left" timestamp="1606403130144">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.809@0.23.1440.809" timestamp="1605120774991" />
-    <state width="1419" height="171" key="GridCell.Tab.0.left/0.25.1440.802@0.25.1440.802" timestamp="1606253059536" />
-    <state width="1419" height="171" key="GridCell.Tab.0.right" timestamp="1606253059536">
+    <state width="1419" height="171" key="GridCell.Tab.0.left/0.25.1440.802@0.25.1440.802" timestamp="1606403130144" />
+    <state width="1419" height="171" key="GridCell.Tab.0.left/0.25.1440.803@0.25.1440.803" timestamp="1606402523201" />
+    <state width="1419" height="171" key="GridCell.Tab.0.right" timestamp="1606403130145">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1605120774992" />
-    <state width="1419" height="171" key="GridCell.Tab.0.right/0.25.1440.802@0.25.1440.802" timestamp="1606253059536" />
+    <state width="1419" height="171" key="GridCell.Tab.0.right/0.25.1440.802@0.25.1440.802" timestamp="1606403130145" />
+    <state width="1419" height="171" key="GridCell.Tab.0.right/0.25.1440.803@0.25.1440.803" timestamp="1606402523202" />
     <state x="144" y="94" key="MergeDialog" timestamp="1606158358142">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
@@ -366,11 +380,11 @@
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
     <state x="221" y="68" key="SettingsEditor/0.25.1440.802@0.25.1440.802" timestamp="1605818399641" />
-    <state x="320" y="155" key="Vcs.Push.Dialog.v2" timestamp="1606158387830">
+    <state x="320" y="155" key="Vcs.Push.Dialog.v2" timestamp="1606402249370">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605119778875" />
-    <state x="320" y="155" key="Vcs.Push.Dialog.v2/0.25.1440.802@0.25.1440.802" timestamp="1606158387830" />
+    <state x="320" y="155" key="Vcs.Push.Dialog.v2/0.25.1440.802@0.25.1440.802" timestamp="1606402249370" />
     <state x="518" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606170686571">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
@@ -381,11 +395,11 @@
     </state>
     <state x="468" y="147" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.809@0.23.1440.809" timestamp="1605121121788" />
     <state x="468" y="148" key="git4idea.branch.GitSmartOperationDialog/0.25.1440.802@0.25.1440.802" timestamp="1606158356175" />
-    <state x="385" y="157" width="670" height="671" key="search.everywhere.popup" timestamp="1606167828800">
+    <state x="385" y="157" width="670" height="671" key="search.everywhere.popup" timestamp="1606402346886">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state x="385" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1605120313682" />
-    <state x="385" y="157" width="670" height="671" key="search.everywhere.popup/0.25.1440.802@0.25.1440.802" timestamp="1606167828800" />
+    <state x="385" y="157" width="670" height="671" key="search.everywhere.popup/0.25.1440.802@0.25.1440.802" timestamp="1606402346886" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
