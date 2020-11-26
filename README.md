@@ -65,7 +65,3 @@ This training process takes considerably longer than the previous networks, but 
 human limitations in training data. Further improvements could build upon the inputs to the network (either by adding more
 or reworking the vision system), but a general solution was desired as opposed to passing in the entire _SnakeBoard_ instance
 and restricting the model to a certain board layout.
-
-Here's a quick look at one of the models playing:
-
-![SnakeDemo](Screenshots/SnakeDemo.gif)

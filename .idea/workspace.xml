@@ -22,11 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added screenshots to README.md">
-      <change afterPath="$PROJECT_DIR$/Screenshots/SnakeDemo.gif" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added a gif of the snake playing to README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Genetics/GeneticSnakeAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/GeneticSnakeAI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/SnakeDemo.gif" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606402247501</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added a gif of the snake playing to README.md">
+      <created>1606405958953</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1606405958953</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -323,7 +329,8 @@
     <MESSAGE value="Changed the way SnakeWindow.py writes to files for NeuralNetwork.py." />
     <MESSAGE value="Moved and renamed some files." />
     <MESSAGE value="Added screenshots to README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added screenshots to README.md" />
+    <MESSAGE value="Added a gif of the snake playing to README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a gif of the snake playing to README.md" />
   </component>
   <component name="WindowStateProjectService">
     <state x="420" y="232" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606404026480">
@@ -334,10 +341,11 @@
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state x="210" y="25" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.25.1440.802@0.25.1440.802" timestamp="1606157299985" />
-    <state x="458" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605120378817">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="458" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606406598770">
+      <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state x="458" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.809@0.23.1440.809" timestamp="1605120378817" />
+    <state x="458" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1440.802@0.25.1440.802" timestamp="1606406598770" />
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
@@ -380,11 +388,11 @@
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
     <state x="221" y="68" key="SettingsEditor/0.25.1440.802@0.25.1440.802" timestamp="1605818399641" />
-    <state x="320" y="155" key="Vcs.Push.Dialog.v2" timestamp="1606402249370">
+    <state x="320" y="155" key="Vcs.Push.Dialog.v2" timestamp="1606405960532">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1605119778875" />
-    <state x="320" y="155" key="Vcs.Push.Dialog.v2/0.25.1440.802@0.25.1440.802" timestamp="1606402249370" />
+    <state x="320" y="155" key="Vcs.Push.Dialog.v2/0.25.1440.802@0.25.1440.802" timestamp="1606405960532" />
     <state x="518" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606170686571">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
