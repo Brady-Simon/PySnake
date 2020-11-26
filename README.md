@@ -2,7 +2,9 @@
 
 An AI-enabled Snake that allows you to train a PyTorch neural network and see the trained network play the game in a Tkinter application. 
 This project was made by Brady Simon and Gerald Arenas as a way to learn more about neural networks and how representing the same 
-information differently can cause different outcomes.
+information differently can cause different outcomes. The window can be customized to look basic or have fancier colors and gradients.
+
+![Basic Snake UI](Screenshots/BasicSnake.png) ![Fancy Snake UI](Screenshots/ColorfulSnake.png)
 
 There are three different neural network files:
   1. NeuralNetwork.py
