@@ -1,5 +1,4 @@
 import tkinter as tk
-from random import randint
 from typing import Tuple
 from Controllers.SnakeAlgorithm import SnakeAlgorithm
 from Models.SnakeBoard import SnakeBoard

@@ -196,8 +196,6 @@ class NeuralNetwork(SnakeControllable):
             return Direction.none
 
 
-
-
 def generateBoard(controller) -> SnakeBoard:
     """Generates an example `SnakeBoard` to use for training."""
     snakeBoard = SnakeBoard()

@@ -18,4 +18,3 @@ class SnakeControllable:
                     Direction: The next direction to move the given snake.
                 """
         return Direction.none
-
