@@ -19,12 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code.">
-      <change afterPath="$PROJECT_DIR$/Views/ProgressBar.py" afterDir="false" />
+    <list default="true" id="cef835f7-1477-4b25-8811-f81c80099d51" name="Default Changelist" comment="Added BackupRawBoardFiles">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/GenericSnakeAI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/GeneticTrainer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Genetics/SnakeWorker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Genetics/SnakeWorker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="manual_data" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,6 +52,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gerald Arenas\PycharmProjects\PySnake\BackupRawBoardFiles" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.SnakeWindow">
     <configuration name="GenericSnakeAI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -252,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604585551546</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added BackupRawBoardFiles">
+      <created>1606935596127</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606935596127</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,7 +283,8 @@
     <MESSAGE value="Added a health bar to show the current health of hungry snakes.&#10;&#10;Also changed the default snake board generated in SnakeWindow.py to use the generateBoard() function." />
     <MESSAGE value="Added a score property to Snake.py that increments when the snake grows.&#10;&#10;Also added some more documentation on snake properties." />
     <MESSAGE value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored SnakeControllable.py to use SnakeBoard instead of its raw components. This makes it easier to implement in GenericSnakeAI.py.&#10;&#10;Began implementing more Genetic related code." />
+    <MESSAGE value="Added BackupRawBoardFiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added BackupRawBoardFiles" />
   </component>
   <component name="WindowStateProjectService">
     <state x="593" y="331" width="355" height="223" key="Github.ShareDialog" timestamp="1604265655013">
@@ -302,17 +311,27 @@
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.809@0.23.1440.809" timestamp="1604593196243" />
+    <state x="184" y="87" key="MergeDialog" timestamp="1606935469351">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="184" y="87" key="MergeDialog/0.0.1920.1050/-1080.-426.1080.1890@0.0.1920.1050" timestamp="1606935469351" />
     <state x="221" y="66" key="SettingsEditor" timestamp="1604348413772">
       <screen x="0" y="23" width="1440" height="809" />
     </state>
     <state x="221" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1604348413772" />
-    <state x="320" y="154" key="Vcs.Push.Dialog.v2" timestamp="1604585553075">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="747" y="241" key="VCS.ChangeListViewerDialog" timestamp="1606935440937">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="747" y="241" key="VCS.ChangeListViewerDialog/0.0.1920.1050/-1080.-426.1080.1890@0.0.1920.1050" timestamp="1606935440937" />
+    <state x="427" y="170" key="Vcs.Push.Dialog.v2" timestamp="1606935598607">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="427" y="170" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1080.-426.1080.1890@0.0.1920.1050" timestamp="1606935598607" />
     <state x="320" y="154" key="Vcs.Push.Dialog.v2/0.23.1440.809@0.23.1440.809" timestamp="1604585553075" />
-    <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604436282608">
-      <screen x="0" y="23" width="1440" height="809" />
+    <state x="691" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606935463336">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="691" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/-1080.-426.1080.1890@0.0.1920.1050" timestamp="1606935463336" />
     <state x="518" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.809@0.23.1440.809" timestamp="1604436282608" />
     <state x="385" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1604587654604">
       <screen x="0" y="23" width="1440" height="809" />
