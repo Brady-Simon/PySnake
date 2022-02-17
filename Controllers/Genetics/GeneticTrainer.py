@@ -2,7 +2,7 @@ import copy
 import torch
 import random
 import time
-from typing import List
+from typing import List, Tuple
 from Views.ProgressBar import ProgressBar
 from Models.SnakeBoard import SnakeBoard
 from Models.Snake import Snake
@@ -15,7 +15,7 @@ class GeneticTrainer:
     @staticmethod
     def startSimulation(get_model, initial_state_dict, population: int = 512,
                         generations: int = 128, mutation_rate: float = 0.05,
-                        cutoff_fitness: float = None, timeout: float = None) -> (dict, List[float]):
+                        cutoff_fitness: float = None, timeout: float = None) -> Tuple[dict, List[float]]:
         """Starts the simulations using a large population-child setup.
 
         Args:
@@ -73,7 +73,7 @@ class GeneticTrainer:
         return max_dict, fitness_history
 
     @staticmethod
-    def simulate(model, state_dicts, population, mutation_rate) -> (dict, float, List[dict]):
+    def simulate(model, state_dicts, population, mutation_rate) -> Tuple[dict, float, List[dict]]:
         """Simulates the snake population with the given `state_dicts`.
 
         Returns:
@@ -120,7 +120,7 @@ class GeneticTrainer:
         return best_state_dict, best_fitness, next_population
 
     @staticmethod
-    def playGame(model, state_dict) -> (int, int):
+    def playGame(model, state_dict) -> Tuple[int, int]:
         """Plays a game with the given board and returns the score and total moves."""
         move_counter = 0
         score = 0
@@ -198,7 +198,7 @@ class GeneticTrainer:
         return snakeBoard
 
     @staticmethod
-    def randomAdjacentPosition(pos: (int, int)) -> (int, int):
+    def randomAdjacentPosition(pos: Tuple[int, int]) -> Tuple[int, int]:
         direction = Direction.moves()[random.randint(0, len(Direction.moves()) - 1)]
         return pos[0] + direction.value[0], pos[1] + direction.value[1]
 
